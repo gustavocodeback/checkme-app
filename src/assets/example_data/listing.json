@@ -1,0 +1,39 @@
+{
+    "banner_image": "./assets/images/listing/600x300banner1.png",
+    "banner_title": "Sports",
+    "populars": [
+        {
+            "title": "Air Sports",
+            "image": "./assets/images/listing/300x300AirSports.png"
+        },
+        {
+            "title": "Water Sports",
+            "image": "./assets/images/listing/300x300WaterSports.png"
+        },
+        {
+            "title": "Beach Sports",
+            "image": "./assets/images/listing/300x300BeachSports.png"
+        },
+        {
+            "title": "Extreme Sports",
+            "image": "./assets/images/listing/300x300ExtremeSports.png"
+        },
+        {
+            "title": "Athletic Sports",
+            "image": "./assets/images/listing/300x300AthleticSports.png"
+        },
+        {
+            "title": "Combat Sports",
+            "image": "./assets/images/listing/300x300CombatSports.png"
+        }
+    ],
+    "categories": [
+        {
+            "title": "Treinamento",
+            "image": "./assets/images/listing/treinamento.png"
+        }, {
+            "title": "Quiz",
+            "image": "./assets/images/listing/quiz.png"
+        }
+    ]
+}

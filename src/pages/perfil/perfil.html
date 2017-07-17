@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Edição de Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="perfil-content">
+   <div class="user-image-content">
+    <ion-row no-padding class="user-image-row" (click)="getPic()">
+      <ion-col no-padding width-40>
+        <preload-image class="user-image" [ratio]="{w:1, h: 1}" [src]="pic" *ngIf="pic" (error)="updatePic()"></preload-image> 
+        <preload-image class="user-image" [ratio]="{w:1, h: 1}" src="assets/images/avatar.png" *ngIf="!pic" (error)="updatePic()"></preload-image> 
+      </ion-col>
+    </ion-row>
+    <h3 class="image-action">Trocar foto de perfil</h3>
+  </div> 
+
+  <form [formGroup]="perfilForm" class="perfil-form">
+    <ion-list class="user-data-content">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" formControlName="nome" [disabled]="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nova Senha</ion-label>
+        <ion-input type="password" formControlName="senha" show-hide-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Confirmar Nova Senha</ion-label>
+        <ion-input type="password" formControlName="novasenha" show-hide-input></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <!-- <ion-list class="switchers-list">
+      <ion-item class="switcher-item">
+        <ion-label>Notifications</ion-label>
+        <ion-toggle formControlName="notifications"></ion-toggle>
+      </ion-item>
+    </ion-list> -->
+  </form>
+
+  <button class="alt-button" ion-button full (click)="showPrivacyModal()">Politica de privacidade</button>
+
+  <button class="alt-button" ion-button full (click)="showTermsModal()">Termos de uso</button>
+
+  <button class="alt-button logout-button" ion-button full icon-left (click)="logout()">
+    <ion-icon name="log-out"></ion-icon>
+    Log out
+  </button>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button block (click)="salvar()" [disabled]="perfilForm && !perfilForm.valid">Salvar</button>
+  </ion-toolbar>
+</ion-footer>

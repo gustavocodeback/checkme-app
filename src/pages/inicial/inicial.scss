@@ -1,0 +1,161 @@
+@mixin categories-title-style($color){
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	font-size: 8vw;
+	font-weight: 100;
+	letter-spacing: 0.4px;
+	color: $color;
+	margin: 0px;
+}
+
+inicial-page {
+	$categories-heading-image-height: 150px;
+	$categories-grid-padding: 10px;
+	$categories-horizontal-list-padding: 10px;
+
+	.dados {
+		width: 100%;
+		height: 20px;
+		padding: 15px;
+
+		.dado-container {
+			color: #fff;
+			font-size: 18px;
+			display: inline-block;
+			text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+
+			.icone-wrapper {
+				display: inline-block;
+				font-size: 14px;				
+			}
+
+			.texto {
+				display: inline-block;
+			}
+		}
+	}
+
+	.inicial-header
+	{
+		.header-logo
+		{
+			width: 34vw;
+		}
+	}
+
+	.inicial-content
+	{
+		.image-heading
+		{
+			height: $categories-heading-image-height;
+
+			.bg-overlay {
+				z-index: 1;
+				background-color: rgba($black-c, .2);
+			}
+
+			ion-spinner {
+				z-index: 2;
+			}
+
+			@include spinner-color($white);
+
+			.heading-row
+			{
+				height: 100%;
+				width: 100%;
+				z-index: 3;
+  				position: absolute;
+				@include align-items(center);
+
+				.main-title
+				{
+					@include categories-title-style($white);
+					font-size: 10vw;
+				}
+			}
+		}
+
+		.categories-title
+		{
+			font-size: 1.2rem;
+			font-weight: 400;
+			letter-spacing: 0.7px;
+			color: $theme-color-2;
+			margin: 8px 16px 16px;
+		}
+
+		.horizontal-categories
+		{
+			border-bottom: 10px solid $white-a;
+			@include element-shadow();
+			padding-bottom: 16px;
+
+			.scroll-content
+			{
+				position: relative;
+				contain: style layout;
+			}
+
+			preload-image {
+				border-radius: 50%;
+
+				img	{
+					border-radius: 50%;
+				}
+			}
+
+			.categories-row
+			{
+				@include flex-wrap(nowrap);
+
+				&::after{
+					content: '';
+					flex: 0 0 $categories-horizontal-list-padding;
+			    max-width: $categories-horizontal-list-padding;
+				}
+			}
+
+			.horizontal-item
+			{
+				padding: 3px 3px 3px $categories-horizontal-list-padding;
+				preload-image{
+					-webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.45);
+					-moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.45);
+					box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.45);
+				}
+			}
+		}
+
+		.grid-categories
+		{
+			padding: 0px ($categories-grid-padding/2);
+			@include flex-wrap(wrap);
+
+			.category-item
+			{
+				padding: 0px ($categories-grid-padding/2) $categories-grid-padding;
+
+				width: calc( 50vw - 20px );
+				height: calc( 50vw - 20px );
+				text-align: center;
+				position: relative;
+
+				img{
+					width: 60%;
+
+				}
+				.category-title
+				{
+					font-size: 20px !important;
+					@include categories-title-style(#616161);
+					position: absolute;
+					bottom: 20px;
+					left: 0;
+				}			
+				
+			}
+		}
+	}
+}
