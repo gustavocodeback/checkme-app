@@ -1,3 +1,4 @@
+import { GabaritoPage } from './../pages/gabarito/gabarito';
 // import { CameraMock } from './../mocks/camera';
 import { Camera } from '@ionic-native/camera';
 import { ValidateProvider } from './../providers/validate/validate';
@@ -13,6 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { ListProdutosPage } from '../pages/list-produtos/list-produtos';
+import { ListQuizPage } from '../pages/list-quiz/list-quiz';
 import { TermsOfServicePage } from '../pages/terms-of-service/terms-of-service';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -32,11 +34,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 // Functionalities
 import { DetalhesProdutoPage } from '../pages/detalhes-produto/detalhes-produto';
+import { DetalhesQuizPage } from '../pages/detalhes-quiz/detalhes-quiz';
+import { PictureProvider } from './../providers/picture/picture';
+import { ResponderPage } from '../pages/responder/responder';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
 import { ErrorsPipe } from '../pipes/errors/errors';
 import { ClearPipe } from '../pipes/clear/clear';
-import { PictureProvider } from './../providers/picture/picture';
 
 
 @NgModule({
@@ -51,6 +55,7 @@ import { PictureProvider } from './../providers/picture/picture';
     TermsOfServicePage,
     PrivacyPolicyPage,
     DetalhesProdutoPage,
+    DetalhesQuizPage,
     NotWorkingPage,
     PerfilPage,
     SignupPage,
@@ -59,7 +64,10 @@ import { PictureProvider } from './../providers/picture/picture';
     ShowHideContainer,
     ShowHideInput,
     ErrorsPipe,
-    ClearPipe
+    ClearPipe,
+    ListQuizPage,
+    ResponderPage,
+    GabaritoPage
   ],
   imports: [
     BrowserModule,
@@ -75,13 +83,16 @@ import { PictureProvider } from './../providers/picture/picture';
     HomePage,
     ForgotPasswordPage,
     SignupPage,
-    SignupPage,
+    ListQuizPage,
+    DetalhesQuizPage,
     ListProdutosPage,
     TermsOfServicePage,
     PrivacyPolicyPage,
     DetalhesProdutoPage,
     NotWorkingPage,
-    PerfilPage
+    PerfilPage,
+    ResponderPage,
+    GabaritoPage
   ],
   providers: [
     InicialService,

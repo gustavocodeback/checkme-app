@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{quiz['Nome']}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="detalhes-produto-content">
+
+  <ion-slides class="contact-slides" pager="true" autoplay="4000" loop="false">
+    <ion-slide class="contact-slide">
+      <background-image class="slide-image" [src]="quiz['Foto']"></background-image>
+    </ion-slide>
+  </ion-slides><!-- imagens do produto -->
+
+  <ion-row class="contact-details-row" wrap>
+    <ion-col no-padding width-65>
+      <h2 class="contact-name">{{quiz['Nome']}}</h2>
+    </ion-col>
+  </ion-row><!-- nome do produto -->
+
+  <div class="content">
+    <h4 class="categories-title">Quantos Pontos</h4>
+    <div class="points">
+      <div class="points-content">
+        <div class="number">{{quiz['Pontos']}}</div>
+        <div class="text">Pontos</div>
+      </div>
+    </div>  
+  </div><!-- quantidade de pontos -->
+
+  <div class="content">
+    <h4 class="categories-title">Descrição</h4> 
+    <p>{{quiz['Descricao']}}</p>
+  </div><!-- descricao do produto -->
+
+  <div class="content">
+    <h4 class="categories-title">Começar quiz</h4>
+    <p style="text-align: center">
+      <button *ngIf="quiz['Encerrado']" (click)="verGabarito()" ion-button round color="secondary" block>Ver gabarito</button>
+      <button *ngIf="!quiz['Encerrado']" (click)="responder()" ion-button round color="primary" block>Começar quiz</button>
+    </p>
+  </div>
+  
+</ion-content>

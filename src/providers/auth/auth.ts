@@ -12,6 +12,7 @@ export class AuthProvider {
 
   // faz o logout
   public logout() {
+    localStorage.clear();
     return firebase.auth().signOut();
   }
 
@@ -69,6 +70,10 @@ export class AuthProvider {
             user['nome'] = res['nome'];
             firebase.database().ref( '/usuarios/' + user['cpf'] ).update( { nome : res['nome'] } );
           }
+
+          // grava no local storage
+          localStorage.setItem( 'auth-email', user['email'] );
+          localStorage.setItem( 'auth-uid', uid );
 
           // da resolve no usuario
           resolve( user );
@@ -158,12 +163,14 @@ export class AuthProvider {
     return firebase.auth().sendPasswordResetEmail(email);
   }
 
+  // pega o usuario atual
   public async currentUser() {
     const uid = firebase.auth().currentUser.uid;
     const user = await this.setUid( uid );
     return user;
   }
   
+  // faz a reauntenticacao
   public reauthenticate( pass:string ): firebase.Promise<void> {
     this.credentials = firebase.auth.EmailAuthProvider.credential(
         firebase.auth().currentUser.email,

@@ -9,4 +9,5 @@ export class InicialModel {
 export class InicialItemModel {
   title: string;
   image: string;
+  page?: string;
 }

@@ -13,6 +13,7 @@ export class ErrorsPipe implements PipeTransform {
     'auth/weak-password': 'A senha digitada precisa ter mais de 6 caracteres.',
     'auth/wrong-password': 'A senha está incorreta.',
     'auth/invalid-cpf': 'O CPF não está cadastrado.',
+    'auth/invalid_cpf': 'O CPF não está incorreto.',
     'auth/user-not-found': 'Usuário incorreto ou não cadastrado'
   };
 

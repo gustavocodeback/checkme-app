@@ -1,3 +1,4 @@
+import { ListQuizPage } from './../list-quiz/list-quiz';
 import { ListProdutosPage } from './../list-produtos/list-produtos';
 import { NotWorkingPage } from './../not-working/not-working';
 import { Component } from '@angular/core';
@@ -49,14 +50,22 @@ export class InicialPage {
 
   // abre a listagem de produtos
   openProdutosList( categoria ) {
-    console.log( categoria );
     this.nav.push( ListProdutosPage, { categoria } );
   }
 
-  // mostra a pagina de funcionalidade nao implementada
-  notWorking() {
-    const modal = this.modal.create( NotWorkingPage );
-    modal.present();
-  }
+  // mostra a listagem de questionarios
+  openPage( page ) {
 
+    // paginaes
+    const pages = {
+      'NotWorkingPage': NotWorkingPage,
+      'ListQuizPage' : ListQuizPage
+    };
+
+    // pagina atual
+    page = pages[page];
+
+    // abre a pagina
+    this.nav.push( page );
+  }
 }

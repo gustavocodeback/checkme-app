@@ -5,7 +5,7 @@ import { HomePage } from './../pages/home/home';
 import { NotWorkingPage } from './../pages/not-working/not-working';
 import { TermsOfServicePage } from './../pages/terms-of-service/terms-of-service';
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav, App } from 'ionic-angular';
+import { Platform, MenuController, Nav, App, LoadingController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -37,6 +37,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public statusBar: StatusBar,
     public auth: AuthProvider,
+    public loadingCtrl: LoadingController,
     public api: ApiProvider
   ) {
 
@@ -58,16 +59,21 @@ export class MyApp {
       // verifica se existe um usuario
       if ( user ) {
 
+        // cria o loading
+        const loading = this.loadingCtrl.create( { content: 'Verificando no sistema ...' } );
+        loading.present();
+
         // seta o uid
         this.auth.setUid( user.uid )
         .then( userObj => {
-          this.user = userObj;          
-          console.log(this.user);
           
+          // seta o usuario
+          this.user = userObj;
+
           // vai para a pagina inicial
           this.nav.setRoot( TabsNavigationPage );
-        }).catch( err => console.log( err ) );
-
+        }).catch( err => console.log( err ) )
+        .then( () => loading.dismiss() );
       } else {
 
         // vai para a pagina inicial

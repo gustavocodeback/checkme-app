@@ -1,0 +1,75 @@
+// Common list styles can be found in "./common.styles/layouts/lists"
+$list-big-description-font-size: 12px;
+
+list-quiz-page {
+	ion-header {
+		@include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
+	}
+
+	.list-big-content
+	{
+		background-color: color($colors, background, base);
+
+		.list-big
+		{
+			@include layout-list-styles($theme-color-2, $white-d);
+
+			ion-list {
+				.list-item
+				{
+					
+					.content-row
+					{
+						@include align-items(center);
+					}
+
+					.item-content
+					{
+						@include align-content(stretch);
+					  @include display(flex);
+					  @include flex-wrap(wrap);
+					  @include align-self(stretch);
+
+						.item-title
+						{
+							margin-bottom: 8px;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+						}
+
+						.item-description
+						{
+							@include multi-line-ellipsis($list-big-description-font-size);
+						}
+					}
+				}
+			}
+		}
+		.dont-have-product {
+			.text {
+				display: inline-block;
+				text-align: center;
+
+				.icone-wrapper {
+					display: inline-block;
+					font-size: 60px;
+					color: #ccc;
+					padding: 50px;
+				}
+
+				.title { 
+					display: inline-block;
+					font-size: 20px;
+					color: #ccc;
+				}
+
+				.content {
+					display: inline-block;
+					color: #ccc;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}

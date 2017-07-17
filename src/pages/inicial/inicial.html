@@ -11,7 +11,7 @@
 
 <ion-content class="inicial-content">
   
-  <background-image class="image-heading" src="https://s-media-cache-ak0.pinimg.com/originals/4a/b5/9c/4ab59cfffd0a8b1043d2bb9c54a94523.jpg">
+  <background-image class="image-heading" src="./assets/images/banner_200.jpg">
     <div class="dados">
       <div class="dado-container">
         <div class="icone-wrapper">
@@ -46,7 +46,7 @@
   
   <ion-row class="grid-categories">
     <ion-col width-50 class="category-item" *ngFor="let category of inicial.categories">
-      <img class="category-heading" [src]="category.image" (click)="notWorking()">
+      <img class="category-heading" [src]="category.image" (click)="openPage( category.page )">
       <h2 class="category-title">{{category.title}}</h2>
     </ion-col>
   </ion-row>

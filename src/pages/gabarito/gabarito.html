@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Gabarito</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="quiz-content">
+  <div [ngClass]=" item['Status'] ? 'content success' : 'content error' " *ngFor="let item of perguntas">
+    <p>
+      <b>{{ item['Texto'] }}</b>
+    </p>
+    <p [ngClass]=" item['Status'] ? 'success' : 'error' ">
+      {{ item['Resposta']}} ) {{ item['TextoResposta'] }}
+      <br>
+      <br>
+      <b *ngIf="item['Status']">Você acertou essa pergunta.</b>
+      <b *ngIf="!item['Status']">Você errou essa pergunta.</b>
+    </p>
+  </div>
+</ion-content>
