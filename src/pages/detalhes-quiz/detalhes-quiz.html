@@ -22,7 +22,9 @@
     <h4 class="categories-title">Quantos Pontos</h4>
     <div class="points">
       <div class="points-content">
-        <div class="number">{{quiz['Pontos']}}</div>
+        <div class="number">
+          <span *ngIf="quiz['Encerrado']">{{ quiz['Acertadas'] }}/</span>{{quiz['Pontos']}}
+        </div>
         <div class="text">Pontos</div>
       </div>
     </div>  
