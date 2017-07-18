@@ -18,14 +18,8 @@ export class InicialService {
      .catch(this.handleError);
   }
 
+  // pega as categorias
   public obterCategorias() : Promise<Array<Object>> {
-    this.api.get( '/api/obter_primeiros_colocados' )
-    .then( res => {
-      console.log( res );
-    })
-    .catch( res => {
-      console.log( res );
-    });
     return this.api.get('/api/obter_categorias');
   }
 

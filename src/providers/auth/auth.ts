@@ -178,4 +178,20 @@ export class AuthProvider {
       );
     return firebase.auth().currentUser.reauthenticateWithCredential( this.credentials );
   }
+
+  // pega a foto
+  public obterFoto( cpf ) {
+    return new Promise( ( resolve, reject ) => {
+
+      // pega o usuario
+      this.obterUsuarioPorCpf( cpf ).then( user => {
+        const usr = user.val();
+        if ( usr ) {
+          const foto =  usr.foto ? usr.foto : null;
+          resolve( foto );
+         } else resolve( null );
+      })
+      .catch( err => resolve( null ) );
+    });
+  }
 }

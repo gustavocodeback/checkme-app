@@ -1,3 +1,4 @@
+import { RankingService } from './../ranking/ranking.service';
 import { ListQuizPage } from './../list-quiz/list-quiz';
 import { ListProdutosPage } from './../list-produtos/list-produtos';
 import { NotWorkingPage } from './../not-working/not-working';
@@ -7,26 +8,34 @@ import 'rxjs/Rx';
 import { InicialModel } from './inicial.model';
 import { InicialService } from './inicial.service';
 
-
 @Component({
   selector: 'inicial-page',
   templateUrl: 'inicial.html',
+  providers: [ RankingService ]
 })
 export class InicialPage {
   inicial: InicialModel = new InicialModel();
   loading: any;
 
+  // cateogorias
   public categorias = [];
 
+  // posicao
+  public pos;
+
+  // pontos
+  public pontos;
+
+  // método construtor
   constructor(
     public nav: NavController,
     public inicialService: InicialService,
     public loadingCtrl: LoadingController,
-    public modal: ModalController
+    public modal: ModalController,
+    public ranking: RankingService
   ) {
     this.loading = this.loadingCtrl.create();
   }
-
 
   ionViewDidLoad() {
     this.loading.present();
@@ -37,6 +46,12 @@ export class InicialPage {
       this.inicial.banner_title = data.banner_title;
       this.inicial.populars = data.populars;
       this.inicial.categories = data.categories;
+    });
+
+    this.ranking.obterMinhaPosicao()
+    .then( usr => {
+      this.pos    = usr.ranking;
+      this.pontos = usr.pontos;
     });
 
     this.inicialService.obterCategorias()

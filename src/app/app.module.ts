@@ -1,3 +1,4 @@
+import { RankingPage } from './../pages/ranking/ranking';
 import { GabaritoPage } from './../pages/gabarito/gabarito';
 // import { CameraMock } from './../mocks/camera';
 import { Camera } from '@ionic-native/camera';
@@ -67,7 +68,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     ClearPipe,
     ListQuizPage,
     ResponderPage,
-    GabaritoPage
+    GabaritoPage,
+    RankingPage    
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     NotWorkingPage,
     PerfilPage,
     ResponderPage,
-    GabaritoPage
+    GabaritoPage,
+    RankingPage
   ],
   providers: [
     InicialService,

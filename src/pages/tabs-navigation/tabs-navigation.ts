@@ -1,3 +1,4 @@
+import { RankingPage } from './../ranking/ranking';
 import { Component } from '@angular/core';
 import { InicialPage } from '../inicial/inicial';
 import { NotWorkingPage } from './../not-working/not-working';
@@ -13,7 +14,7 @@ export class TabsNavigationPage {
 
   constructor() {
     this.tab1Root = InicialPage;
-    this.tab2Root = NotWorkingPage;
+    this.tab2Root = RankingPage;
     this.tab3Root = NotWorkingPage;
   }
 }

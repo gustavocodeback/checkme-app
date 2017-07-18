@@ -18,7 +18,7 @@
           <ion-icon name="logo-usd"></ion-icon>
         </div>
         <div class="texto">
-          --- pts
+          {{ pontos ? pontos : '---' }} pts
         </div>
       </div>
       <div class="dado-container" style="float: right">
@@ -26,7 +26,7 @@
           <ion-icon name="flag"></ion-icon>
         </div>
         <div class="texto">
-          --º pos
+          {{ pos ? pos+'º' : '--º' }} pos
         </div>
       </div>
     </div>
