@@ -103,7 +103,6 @@ export class ResponderPage {
 
   // responde uma pergunta
   public responder() {
-    console.log( this.selecionada );
 
     // exibe o loading
     const loading = this.loadingCtrl.create( { content: 'Salvando resposta' } );
@@ -117,7 +116,7 @@ export class ResponderPage {
 
       // verifica se existem mais perguntas
       if ( this.index < this.perguntas.length ) {
-        console.log( 'carregar proxima pergunta' );
+        this.pergunta = this.perguntas[this.index];
       } else {
         this.encerrar();
       }
