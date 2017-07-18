@@ -8,6 +8,10 @@
 	// Default
 	height: ($font-size + 4px)*4;
 
+	&[rows="1"]
+	{
+		height: ($font-size + 4px)*1;
+	}
 	&[rows="2"]
 	{
 		height: ($font-size + 4px)*2;

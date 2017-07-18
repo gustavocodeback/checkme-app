@@ -1,6 +1,8 @@
 import { RankingPage } from './../pages/ranking/ranking';
+import { DetalhesNotificacaoPage } from './../pages/detalhes-notificacao/detalhes-notificacao';
+import { ListNotificacoesService } from './../pages/list-notificacoes/list-notificacoes.service';
+import { ListNotificacoesPage } from './../pages/list-notificacoes/list-notificacoes';
 import { GabaritoPage } from './../pages/gabarito/gabarito';
-// import { CameraMock } from './../mocks/camera';
 import { Camera } from '@ionic-native/camera';
 import { ValidateProvider } from './../providers/validate/validate';
 import { NotWorkingPage } from './../pages/not-working/not-working';
@@ -56,6 +58,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     TermsOfServicePage,
     PrivacyPolicyPage,
     DetalhesProdutoPage,
+    ListNotificacoesPage,
+    DetalhesNotificacaoPage,
     DetalhesQuizPage,
     NotWorkingPage,
     PerfilPage,
@@ -88,6 +92,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     ListQuizPage,
     DetalhesQuizPage,
     ListProdutosPage,
+    ListNotificacoesPage,
+    DetalhesNotificacaoPage,
     TermsOfServicePage,
     PrivacyPolicyPage,
     DetalhesProdutoPage,
@@ -100,6 +106,7 @@ import { ClearPipe } from '../pipes/clear/clear';
   providers: [
     InicialService,
     ListProdutosService,
+    ListNotificacoesService,
     Camera,
 	  SplashScreen,
 	  StatusBar,
