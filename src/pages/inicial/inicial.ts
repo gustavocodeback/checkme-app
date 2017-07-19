@@ -67,7 +67,11 @@ export class InicialPage {
 
   // abre a listagem de produtos
   openProdutosList( categoria ) {
-    this.nav.push( ListProdutosPage, { categoria } );
+    let cat = {};
+    for( let categoriaObj of this.categorias ) {
+      if( categoriaObj.CodCategoria == categoria ) cat = categoriaObj;      
+    }
+    this.nav.push( ListProdutosPage, { 'categoria' : cat } );
   }
 
   // mostra a listagem de questionarios

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Produtos</ion-title>
+    <ion-title *ngIf='categoria'>{{categoria.Nome}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,7 +10,8 @@
       <button class="list-item" ion-item *ngFor="let item of produtos" (click)="openProduto( item )">
         <ion-row no-padding class="content-row">
           <ion-col no-padding width-33 class="item-avatar">
-            <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.Foto"></preload-image>
+            <preload-image  *ngIf="item.Foto" class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.Foto"></preload-image>
+            <preload-image  *ngIf="!item.Foto" class="avatar-image" [ratio]="{w:1, h:1}" [src]="categoria.Foto"></preload-image>
           </ion-col>
           <ion-col no-padding width-57 class="item-content" *ngIf="item['Video'] && item['Descricao']">
             <h3 class="item-title">{{item.Nome}}</h3>
