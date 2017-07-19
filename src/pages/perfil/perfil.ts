@@ -68,7 +68,16 @@ public initForm() {
         rules: 'required|valid_email'
       }, {
         field: 'nome',
-        rules: 'required|maxLength[100]|minLength[2]'
+        rules: 'required'
+      }, {
+        field: 'cargo',
+        rules: 'required'
+      }, {
+        field: 'loja',
+        rules: 'required'
+      }, {
+        field: 'cluster',
+        rules: 'required'
       }, {
         field: 'senha',
         rules: 'maxLength[18]|minLength[6]|matches[novasenha]' 
@@ -92,10 +101,13 @@ public initForm() {
 
       // preenche o formulario
       this.perfilForm.patchValue({
-        email: this.user['email'],
-        nome: this.user['nome'],
-        senha: '',
-        novasenha: ''
+        email       : this.user['email'],
+        nome        : this.user['nome'],
+        loja        : localStorage.getItem('loja'),
+        cluster     : localStorage.getItem('cluster'),
+        cargo       : localStorage.getItem('cargo'),
+        senha       : '',
+        novasenha   : ''
       });
       
       this.loading.dismiss();

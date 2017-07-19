@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Notificações</ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,6 +15,7 @@
           
           <ion-col no-padding width-90 class="item-content">           
             <h3 class="item-title">{{item.Nome}}</h3>
+            <ion-icon padding-left name="eye-off" class="item-title" *ngIf="item.Status == 'N'"></ion-icon>
           </ion-col>
           
           <ion-col no-padding width-10 class="item-icon">
@@ -40,7 +44,7 @@
             Sem Notificações
           </ion-row>
           <ion-row class="content">
-            <p>Não existe nenhuma notificação para você.</p>
+            <p>Nenhuma notificação encontrada.</p>
           </ion-row>
         </ion-row>
     </ion-list>

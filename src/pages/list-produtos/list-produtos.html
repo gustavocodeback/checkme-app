@@ -14,25 +14,38 @@
             <preload-image  *ngIf="!item.Foto" class="avatar-image" [ratio]="{w:1, h:1}" [src]="categoria.Foto"></preload-image>
           </ion-col>
           <ion-col no-padding width-57 class="item-content" *ngIf="item['Video'] && item['Descricao']">
-            <h3 class="item-title">{{item.Nome}}</h3>
-            <p class="item-description" rows="3">{{item.Descricao}}</p>
+            <div class="content-row">              
+              <ion-row>
+            
+                <ion-col no-padding>           
+                  <h3 class="item-title">{{item.Nome}}</h3>
+                </ion-col>
+
+              </ion-row>
+              <ion-row no-padding>
+                <ion-col no-padding>
+                  <p class="item-description" rows="3">{{item.Descricao}}</p>
+                </ion-col>
+              </ion-row>
+            </div>
             <!-- You can change the rows quantity by using rows="X", where X can be any number for example: rows="4" -->
           </ion-col>
           <ion-col no-padding width-57 class="item-content"  *ngIf="!item['Video'] && !item['Descricao']">
-            <ion-row>
-          
-              <ion-col no-padding class="item-content">           
-                <h3 class="item-title">{{item.Nome}}</h3>
-              </ion-col>
-
-            </ion-row>
-            <ion-row no-padding class="content-row">
-              <ion-col no-padding class="item-content">
-                <p class=""><b>Basic Code:</b> {{item.BasicCode}}
-                  <br> <b>Pontos:</b> {{item.Pontos}}
-                </p>
-              </ion-col>
-            </ion-row> 
+            <div class="content-row">
+              <ion-row>          
+                <ion-col no-padding>           
+                  <h3 class="item-title">{{item.Nome}}</h3>
+                </ion-col>
+              </ion-row>
+              <ion-row no-padding>
+                <ion-col no-padding class="item-content">
+                  <p class=""><b>Basic Code:</b> {{item.BasicCode}}
+                    <br> <b>Pontos:</b> {{item.Pontos}}
+                  </p>
+                </ion-col>
+              </ion-row> 
+            </div>
+            
             <!-- You can change the rows quantity by using rows="X", where X can be any number for example: rows="4" -->
           </ion-col>
             
@@ -49,9 +62,11 @@
   <div class="dont-have-product" *ngIf="produtos.length == 0">
     <ion-list>
         <ion-row class="text">
-          <div class="icone-wrapper">
-            <ion-icon name="construct"></ion-icon>
-          </div>
+          <ion-row>
+            <div class="icone-wrapper">
+              <ion-icon name="construct"></ion-icon>
+            </div>
+          </ion-row>
           <ion-row class="title">
             Categoria Sem Produto
           </ion-row>

@@ -1,7 +1,7 @@
 import { LoginPage } from './../login/login';
 import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -20,13 +20,30 @@ export class ForgotPasswordPage {
   public hasError: any = false;
 
   // metodo construtor
-  constructor(  public loadingCtrl: LoadingController, 
-                public auth: AuthProvider,
-                public nav: NavController) {
+  constructor(  public loadingCtrl  : LoadingController, 
+                public auth         : AuthProvider,
+                public nav          : NavController,
+                public alertCtrl    : AlertController ) {
     this.main_page = { component: LoginPage };
     this.forgot_password = new FormGroup({
       email: new FormControl('', Validators.required)
     });
+  }
+
+  public sucesso() {
+    let alert = this.alertCtrl.create({
+      title: 'Sucesso',
+      subTitle: 'Senha resetada com sucesso.\nConfira o email que enviamos para você, nele contém um link para informar uma nova senha.',
+      buttons: [{
+        text:'OK',
+        handler: () => {
+
+          // redireciona para a pagina inicial
+          this.nav.setRoot(this.main_page.component); 
+        },
+      }]
+    });
+    alert.present();
   }
 
   recoverPassword(){
@@ -41,9 +58,7 @@ export class ForgotPasswordPage {
     // envia o email
     this.auth.resetPassword( form.email )
     .then( usr => {
-      
-      // redireciona para a pagina inicial
-      this.nav.setRoot(this.main_page.component);      
+      this.sucesso();
     })
     .catch( err => {
       this.hasError = err['code'];

@@ -57,14 +57,14 @@ export class AuthProvider {
 
         // pega o usuario
         const user = await this.obterUsuarioPorUid( uid );
-        console.log(user);
+        
         // prepara os dados que vao ser enviados
         const dados = { email: user['email'], uid, cpf: user['cpf'] };
 
         // chama a api
         this.api.post( `/api/salvar_uid/${user['cpf']}`, dados )
         .then( res => {
-
+          console.log(res);
           // verifica se o nome já esta setado
           if( !user['nome'] ) {
             user['nome'] = res['nome'];
@@ -74,6 +74,9 @@ export class AuthProvider {
           // grava no local storage
           localStorage.setItem( 'auth-email', user['email'] );
           localStorage.setItem( 'auth-uid', uid );
+          localStorage.setItem( 'cargo', res['cargo'] );
+          localStorage.setItem( 'loja', res['loja'] );
+          localStorage.setItem( 'cluster', res['cluster'] );
 
           // da resolve no usuario
           resolve( user );

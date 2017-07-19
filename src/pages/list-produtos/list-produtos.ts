@@ -27,8 +27,10 @@ export class ListProdutosPage {
   }
 
   public obterProdutos( loader = null ) {
-    this.loading = this.loadingCtrl.create({ content: 'Carregando Produtos...' });
-    this.loading.present();
+    if( !loader ){
+      this.loading = this.loadingCtrl.create({ content: 'Carregando Produtos...' });
+      this.loading.present();
+    }
     this.listProdutosService
     .obterProdutosCategoria( this.categoria.CodCategoria, this.produtos.length )
     .then( produtos => {
@@ -41,7 +43,7 @@ export class ListProdutosPage {
     .then( () => {
 
       if ( loader ) loader.complete();
-      this.loading.dismiss();
+      else this.loading.dismiss();
     })
   }
 
