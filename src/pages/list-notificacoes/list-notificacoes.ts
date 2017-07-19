@@ -53,10 +53,13 @@ export class ListNotificacoesPage {
     })
   }
 
-  ionViewDidLoad() {
+  // quando a view entrar
+  ionViewDidEnter() {
+    this.notificacoes = [];
     this.obterNotificacoes();
   }
 
+  // abre a notificacao
   public openNotificacao( notificacao ) {
 
     // carrega a pagina de detalhes da notificação

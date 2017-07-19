@@ -10,6 +10,9 @@ export class ApiProvider {
   // url base
   public url;
 
+  // callback de notificacao
+  public callback;
+
   /**
    * constructor
    * 
@@ -20,6 +23,10 @@ export class ApiProvider {
 
     // pega a url
     this.url = constants.url;
+  }
+
+  public notify( callback ) {
+    this.callback = callback;
   }
 
   /**
@@ -110,6 +117,11 @@ export class ApiProvider {
           return;
         }
 
+        // verifica se tem notificacoes
+        if ( body.notificacoes && this.callback ) {
+          this.callback( body.notificacoes );
+        }
+
         // verifica o código
         switch( body.code ) {
           case '400':
@@ -118,7 +130,7 @@ export class ApiProvider {
           case '200':
             resolve( body.data );
           break;
-          case '100':
+          case '403':
             resolve( 'Acesso negado' );
           break;
         }

@@ -1,9 +1,9 @@
+import { SuportePage } from './../pages/suporte/suporte';
 import { ExtratoPage } from './../pages/extrato/extrato';
 import { PerfilPage } from './../pages/perfil/perfil';
 import { ApiProvider } from './../providers/api/api';
 import { AuthProvider } from './../providers/auth/auth';
 import { HomePage } from './../pages/home/home';
-import { NotWorkingPage } from './../pages/not-working/not-working';
 import { TermsOfServicePage } from './../pages/terms-of-service/terms-of-service';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav, App, LoadingController } from 'ionic-angular';
@@ -95,7 +95,7 @@ export class MyApp {
 
     this.pushPages = [
       { title: 'Termos e condições', icon: 'document', component: TermsOfServicePage },    
-      { title: 'Suporte', icon: 'people', component: NotWorkingPage },
+      { title: 'Suporte', icon: 'people', component: SuportePage },
       { title: 'Extrato', icon: 'barcode', component: ExtratoPage },
     ];
   }

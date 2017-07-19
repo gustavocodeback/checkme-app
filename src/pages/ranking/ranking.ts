@@ -40,6 +40,9 @@ export class RankingPage {
   // obtem o ranking por loja
   public obterRankingLojas() {
 
+    // seta o pos
+    this.pos = null;
+
     // cria o loading
     const loading = this.loadingCtrl.create( { content: 'Carregando ranking ...' } );
     loading.present();
@@ -79,13 +82,12 @@ export class RankingPage {
     .then( user => {
       this.pos = user;
       this.obterFoto( this.pos );
-      console.log( this.pos );
     })
     .catch( err => console.log( err ) );
   }
 
   // quando a view entrar
-  ionViewDidEnter() {
+  public ionViewDidEnter() {
 
     // obtem o ranking por loja
     this.obterRankingLojas();

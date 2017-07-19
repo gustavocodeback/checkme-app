@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Suporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="suporte-content">
+
+  <div class="info">
+    <span>As mensagens serão respondidas por e-mail.</span>
+  </div>
+
+  <ion-list *ngIf="mensagens.length > 0" class="schedule-list">
+    <ion-item class="schedule-item" *ngFor="let item of mensagens">
+      <ion-row>
+        <ion-col width-20 class="schedule-date">
+          <h2 class="schedule-day">{{ item ? item['dia'] : '---' }}</h2>
+          <h3 class="schedule-month">{{ item ? item['mes'] : '---' }}</h3>
+          <h4 class="schedule-time">{{ item ? item['hora'] : '---' }}</h4>
+        </ion-col>
+        <ion-col width-80 class="schedule-data">
+          <div class="data-item">
+            <div class="item-content">
+              <div class="item-description">
+                <p class="description-text">{{ item ? item['texto'] : '---' }}</p>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list><!-- extratosgem das transacoes -->
+
+  <div class="dont-have-product" *ngIf="mensagens.length == 0">
+    <ion-list>
+        <ion-row class="text">
+          <div class="icone-wrapper">
+            <ion-icon name="chatboxes"></ion-icon>
+          </div>
+          <ion-row class="title">
+            Nenhuma mensagem
+          </ion-row>
+          <ion-row class="content">
+            <p>Envie mensagem para o nosso suporte</p>
+          </ion-row>
+        </ion-row>
+    </ion-list>
+  </div><!-- se nao achar nenhuma -->
+
+  <div class="ver-mais" *ngIf="hasMore" (click)="obterMensagens( true )">
+    <span *ngIf="!loading">Ver mais ..</span>
+    <ion-spinner *ngIf="loading" ></ion-spinner>
+  </div><!-- ve mais -->
+
+</ion-content>
+
+<ion-footer class="footer-box">
+  <ion-toolbar class="text-content">
+    <textarea [(ngModel)]="mensagem" placeholder="Digite sua mensagem"></textarea>
+  </ion-toolbar>
+  <ion-toolbar class="send-content">
+    <span (click)="enviar()">Enviar mensagem</span>
+  </ion-toolbar>
+</ion-footer>

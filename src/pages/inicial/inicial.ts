@@ -2,7 +2,6 @@ import { ListTreinamentosPage } from './../list-treinamentos/list-treinamentos';
 import { RankingService } from './../ranking/ranking.service';
 import { ListQuizPage } from './../list-quiz/list-quiz';
 import { ListProdutosPage } from './../list-produtos/list-produtos';
-import { NotWorkingPage } from './../not-working/not-working';
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import 'rxjs/Rx';
@@ -43,10 +42,8 @@ export class InicialPage {
     this.inicialService
     .getData()
     .then( data => {
-      console.log(data);
       this.inicial.banner_image = data.banner_image;
       this.inicial.banner_title = data.banner_title;
-      this.inicial.populars = data.populars;
       this.inicial.categories = data.categories;
     });
 

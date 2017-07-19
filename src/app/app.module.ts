@@ -1,3 +1,4 @@
+import { SuportePage } from './../pages/suporte/suporte';
 import { ListTreinamentosService } from './../pages/list-treinamentos/list-treinamentos.service';
 import { ListTreinamentosPage } from './../pages/list-treinamentos/list-treinamentos';
 import { RankingPage } from './../pages/ranking/ranking';
@@ -78,7 +79,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     ResponderPage,
     GabaritoPage,
     RankingPage,
-    ExtratoPage
+    ExtratoPage,
+    SuportePage
   ],
   imports: [
     BrowserModule,
@@ -108,7 +110,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     ResponderPage,
     GabaritoPage,
     RankingPage,
-    ExtratoPage
+    ExtratoPage,
+    SuportePage
   ],
   providers: [
     InicialService,

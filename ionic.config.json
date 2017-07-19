@@ -1,11 +1,11 @@
 {
   "name": "partiuvender",
-  "app_id": "",
+  "app_id": "abf39bc6",
   "type": "ionic-angular",
   "proxies": [
     {
-        "path": "/api",
-        "proxyUrl": "http://localhost/neotass/partiuvender-backoffice/"
+      "path": "/api",
+      "proxyUrl": "http://localhost/neotass/partiuvender-backoffice/"
     }
   ]
 }
