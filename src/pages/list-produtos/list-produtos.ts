@@ -51,6 +51,7 @@ export class ListProdutosPage {
   }
 
   public openProduto( produto ) {
+    if( !produto['Video'] && !produto['Descricao'] ) return;
     this.nav.push( DetalhesProdutoPage, { produto } );
   }
 }
