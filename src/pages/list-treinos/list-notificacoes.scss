@@ -1,7 +1,7 @@
 // Common list styles can be found in "./common.styles/layouts/lists"
 $list-big-description-font-size: 12px;
 
-list-produtos-page {
+list-notificacoes-page {
 	ion-header {
 		@include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
 	}
@@ -18,6 +18,16 @@ list-produtos-page {
 				.list-item
 				{
 					
+					.item-title
+					{
+						margin-bottom: 8px;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						color: $theme-color-2;
+					}
+					
+
 					.content-row
 					{
 						@include align-items(center);
@@ -32,18 +42,13 @@ list-produtos-page {
 
 						.item-title
 						{
-							margin-bottom: 8px;
+							margin-bottom: 0px;
 							overflow: hidden;
 							text-overflow: ellipsis;
 							white-space: nowrap;
 						}
 
 						.item-description
-						{
-							@include multi-line-ellipsis($list-big-description-font-size);
-						}
-
-						.descricao
 						{
 							@include multi-line-ellipsis($list-big-description-font-size);
 						}

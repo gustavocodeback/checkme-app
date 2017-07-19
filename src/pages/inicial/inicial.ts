@@ -1,3 +1,4 @@
+import { ListTreinamentosPage } from './../list-treinamentos/list-treinamentos';
 import { RankingService } from './../ranking/ranking.service';
 import { ListQuizPage } from './../list-quiz/list-quiz';
 import { ListProdutosPage } from './../list-produtos/list-produtos';
@@ -42,6 +43,7 @@ export class InicialPage {
     this.inicialService
     .getData()
     .then( data => {
+      console.log(data);
       this.inicial.banner_image = data.banner_image;
       this.inicial.banner_title = data.banner_title;
       this.inicial.populars = data.populars;
@@ -65,7 +67,11 @@ export class InicialPage {
 
   // abre a listagem de produtos
   openProdutosList( categoria ) {
-    this.nav.push( ListProdutosPage, { categoria } );
+    let cat = {};
+    for( let categoriaObj of this.categorias ) {
+      if( categoriaObj.CodCategoria == categoria ) cat = categoriaObj;      
+    }
+    this.nav.push( ListProdutosPage, { 'categoria' : cat } );
   }
 
   // mostra a listagem de questionarios
@@ -73,7 +79,7 @@ export class InicialPage {
 
     // paginaes
     const pages = {
-      'NotWorkingPage': NotWorkingPage,
+      'ListTreinamentosPage': ListTreinamentosPage,
       'ListQuizPage' : ListQuizPage
     };
 

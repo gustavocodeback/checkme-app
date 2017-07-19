@@ -14,11 +14,12 @@
 
   <ion-row class="contact-details-row" wrap>
     <ion-col no-padding width-65>
-      <h2 class="contact-name">{{produto['Nome']}}</h2>
+      <h2 class="contact-name" *ngIf="produto['BasicCode']">{{produto['BasicCode']}}</h2>
+      <h2 class="contact-name" *ngIf="!produto['BasicCode']">{{produto['Nome']}}</h2>      
     </ion-col>
   </ion-row><!-- nome do produto -->
 
-  <div class="content">
+  <div class="content" *ngIf="produto['Pontos']" >
     <h4 class="categories-title">Quantos Pontos</h4>
     <div class="points">
       <div class="points-content">

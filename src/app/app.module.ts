@@ -1,3 +1,5 @@
+import { ListTreinamentosService } from './../pages/list-treinamentos/list-treinamentos.service';
+import { ListTreinamentosPage } from './../pages/list-treinamentos/list-treinamentos';
 import { RankingPage } from './../pages/ranking/ranking';
 import { DetalhesNotificacaoPage } from './../pages/detalhes-notificacao/detalhes-notificacao';
 import { ListNotificacoesService } from './../pages/list-notificacoes/list-notificacoes.service';
@@ -56,6 +58,7 @@ import { ClearPipe } from '../pipes/clear/clear';
     HomePage,
     ForgotPasswordPage,
     ListProdutosPage,
+    ListTreinamentosPage,
     TermsOfServicePage,
     PrivacyPolicyPage,
     DetalhesProdutoPage,
@@ -93,6 +96,7 @@ import { ClearPipe } from '../pipes/clear/clear';
     SignupPage,
     ListQuizPage,
     DetalhesQuizPage,
+    ListTreinamentosPage,
     ListProdutosPage,
     ListNotificacoesPage,
     DetalhesNotificacaoPage,
@@ -110,6 +114,7 @@ import { ClearPipe } from '../pipes/clear/clear';
     InicialService,
     ListProdutosService,
     ListNotificacoesService,
+    ListTreinamentosService,
     Camera,
 	  SplashScreen,
 	  StatusBar,

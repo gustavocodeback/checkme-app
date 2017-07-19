@@ -23,24 +23,13 @@ export class ListNotificacoesPage {
   ) {
   }
 
-  // obtem as notificacoes
   public obterNotificacoes( loader = null ) {
-
-    // cria o loading
     this.loading = this.loadingCtrl.create({ content: 'Carregando Notificações...' });
-
-    // exibe o loading
     this.loading.present();
-
-    // busca as notificacoes
     this.listNotificacoesService
     .obterNotificacoes( this.notificacoes.length )
     .then( notificacoes => {
-
-      // verifica se tem mais notificacoes
       this.hasMore = notificacoes.length < 10 ? false : true;
-
-      // percorre as notificacoes e adiciona elas na array
       notificacoes.forEach( notificacao => this.notificacoes.push( notificacao ) );
     })
     .catch( err => {
@@ -57,9 +46,8 @@ export class ListNotificacoesPage {
     this.obterNotificacoes();
   }
 
-  public openNotificacao( notificacao ) {
-
-    // carrega a pagina de detalhes da notificação
+  public openProduto( notificacao ) {
+    console.log(notificacao);
     this.nav.push( DetalhesNotificacaoPage, { notificacao } );
   }
 }

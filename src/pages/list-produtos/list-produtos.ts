@@ -24,14 +24,13 @@ export class ListProdutosPage {
     public listProdutosService: ListProdutosService,
     public loadingCtrl: LoadingController
   ) {
-    this.categoria = this.navParams.get( 'categoria' );
   }
 
   public obterProdutos( loader = null ) {
     this.loading = this.loadingCtrl.create({ content: 'Carregando Produtos...' });
     this.loading.present();
     this.listProdutosService
-    .obterProdutosCategoria( this.categoria, this.produtos.length )
+    .obterProdutosCategoria( this.categoria.CodCategoria, this.produtos.length )
     .then( produtos => {
       this.hasMore = produtos.length < 5 ? false : true;
       produtos.forEach( produto => this.produtos.push( produto ) );
@@ -47,10 +46,13 @@ export class ListProdutosPage {
   }
 
   ionViewDidLoad() {
+    
+    this.categoria = this.navParams.get( 'categoria' );
     this.obterProdutos();
   }
 
   public openProduto( produto ) {
+    if( !produto['Video'] && !produto['Descricao'] ) return;
     this.nav.push( DetalhesProdutoPage, { produto } );
   }
 }

@@ -2,7 +2,6 @@ import { RankingPage } from './../ranking/ranking';
 import { ListNotificacoesPage } from './../list-notificacoes/list-notificacoes';
 import { Component } from '@angular/core';
 import { InicialPage } from '../inicial/inicial';
-import { NotWorkingPage } from './../not-working/not-working';
 
 @Component({
   selector: 'tabs-navigation',

@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ListNotificacoesService {
+export class ListTreinamentosService {
   constructor( public http: Http,
   public api : ApiProvider ) {}
 
@@ -16,16 +16,12 @@ export class ListNotificacoesService {
      .catch(this.handleError);
   }
 
-  // busca as notificacoes na api
-  public obterNotificacoes( indice = 1 ) : Promise<Array<Object>> {
+  // busca os treinamentos na api
+  public obterTreinamentos( indice = 1 ) : Promise<Array<Object>> {
 
     // seta o indice
-    indice = indice == 0 ? 1 : Math.floor( indice / 10 ) + 1;
-    return this.api.get( '/api/obter_notificacoes_usuario/' + indice );
-  }
-
-  public lerNotificacoes( disparo ) : Promise<String> {
-    return this.api.get( '/api/ler_notificacao/' + disparo );
+    indice = indice == 0 ? 1 : Math.floor( indice / 5 ) + 1;
+    return this.api.get( '/api/obter_treinamentos/' + indice );
   }
 
   private handleError(error: any): Promise<any> {

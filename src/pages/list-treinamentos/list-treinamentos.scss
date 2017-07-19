@@ -1,7 +1,7 @@
 // Common list styles can be found in "./common.styles/layouts/lists"
 $list-big-description-font-size: 12px;
 
-list-produtos-page {
+list-treinamentos-page {
 	ion-header {
 		@include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
 	}
@@ -39,11 +39,6 @@ list-produtos-page {
 						}
 
 						.item-description
-						{
-							@include multi-line-ellipsis($list-big-description-font-size);
-						}
-
-						.descricao
 						{
 							@include multi-line-ellipsis($list-big-description-font-size);
 						}
