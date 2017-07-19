@@ -31,7 +31,7 @@
         {
             "title" : "Treinamento",
             "image" : "./assets/images/listing/treinamento.png",
-            "page"  : "NotWorkingPage"
+            "page"  : "ListTreinamentosPage"
         }, {
             "title": "Quiz",
             "image": "./assets/images/listing/quiz.png",
