@@ -21,6 +21,7 @@ import { ListQuizPage } from '../pages/list-quiz/list-quiz';
 import { TermsOfServicePage } from '../pages/terms-of-service/terms-of-service';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { ExtratoPage } from '../pages/extrato/extrato';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -73,7 +74,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     ListQuizPage,
     ResponderPage,
     GabaritoPage,
-    RankingPage    
+    RankingPage,
+    ExtratoPage
   ],
   imports: [
     BrowserModule,
@@ -101,7 +103,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     PerfilPage,
     ResponderPage,
     GabaritoPage,
-    RankingPage
+    RankingPage,
+    ExtratoPage
   ],
   providers: [
     InicialService,

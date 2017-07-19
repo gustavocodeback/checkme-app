@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Extrato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="extrato-content">
+
+  <ion-list *ngIf="extratos.length > 0" class="schedule-list">
+    <ion-item class="schedule-item" *ngFor="let item of extratos">
+      <ion-row>
+        <ion-col width-20 class="schedule-date">
+          <h2 class="schedule-day">{{ item ? item['Dia'] : '---' }}</h2>
+          <h3 class="schedule-month">{{ item ? item['Mes'] : '---' }}</h3>
+          <h4 class="schedule-time">{{ item ? item['Hora'] : '---' }}</h4>
+        </ion-col>
+        <ion-col width-80 class="schedule-data">
+          <div class="data-item">
+            <div class="item-content">
+              <h2 class="item-title one-line">{{ item ? item['Item'] : '---' }}</h2>
+              <div class="item-description">
+                <ion-icon class="description-icon" name="logo-usd"></ion-icon>
+                <p class="description-text">{{ item ? item['Pontos'] : '---' }} Pontos</p>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list><!-- extratosgem das transacoes -->
+
+  <div class="dont-have-product" *ngIf="extratos.length == 0">
+    <ion-list>
+        <ion-row class="text">
+          <div class="icone-wrapper">
+            <ion-icon name="construct"></ion-icon>
+          </div>
+          <ion-row class="title">
+            Nenhuma transação
+          </ion-row>
+          <ion-row class="content">
+            <p>Nenhuma transação foi encontrada nessa conta</p>
+          </ion-row>
+        </ion-row>
+    </ion-list>
+  </div><!-- se nao achar nenhuma -->
+
+  <div class="ver-mais" *ngIf="hasMore" (click)="obterExtrato( true )">
+    <span *ngIf="!loading">Ver mais ..</span>
+    <ion-spinner *ngIf="loading" ></ion-spinner>
+  </div><!-- ve mais -->
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="pontos-wrapper">
+    <span class="item-title">Total:</span>
+    <span class="item-pontos">{{ pontos ? pontos : '---' }} pts</span>
+  </ion-toolbar>
+</ion-footer>
