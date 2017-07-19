@@ -2,7 +2,6 @@ import { ListTreinamentosPage } from './../list-treinamentos/list-treinamentos';
 import { RankingService } from './../ranking/ranking.service';
 import { ListQuizPage } from './../list-quiz/list-quiz';
 import { ListProdutosPage } from './../list-produtos/list-produtos';
-import { NotWorkingPage } from './../not-working/not-working';
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import 'rxjs/Rx';

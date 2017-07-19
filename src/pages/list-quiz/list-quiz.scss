@@ -50,12 +50,13 @@ list-quiz-page {
 			.text {
 				display: inline-block;
 				text-align: center;
+				padding-top: 40px;
 
 				.icone-wrapper {
 					display: inline-block;
 					font-size: 60px;
 					color: #ccc;
-					padding: 50px;
+					margin-left: calc(50% - 30px);
 				}
 
 				.title { 

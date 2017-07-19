@@ -22,7 +22,7 @@
           </ion-col>
         </ion-row>
       </button>
-      <ion-infinite-scroll *ngIf="categoria && treinamentos.length > 0 && hasMore" (ionInfinite)="obterProdutos( $event )">
+      <ion-infinite-scroll *ngIf="treinamentos.length > 0 && hasMore" (ionInfinite)="openTreinamento( $event )">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </ion-list>
@@ -30,14 +30,16 @@
   <div class="dont-have-product" *ngIf="treinamentos.length == 0">
     <ion-list>
         <ion-row class="text">
-          <div class="icone-wrapper">
-            <ion-icon name="construct"></ion-icon>
-          </div>
-          <ion-row class="title">
-            Categoria Sem Produto
+          <ion-row>
+            <div class="icone-wrapper">
+              <ion-icon name="construct"></ion-icon>
+            </div>
           </ion-row>
+          <ion-row class="title">
+            Sem Treinamentos
+          </ion-row><br>
           <ion-row class="content">
-            <p>Não existe nenhum produto nesta categoria, logo será acrescentado.</p>
+            <p>Não foi encontrado nenhum treinamento.</p>
           </ion-row>
         </ion-row>
     </ion-list>
