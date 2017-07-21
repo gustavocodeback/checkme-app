@@ -35,21 +35,19 @@
   </ion-list><!-- extratosgem das transacoes -->
 
   <div class="dont-have-product" *ngIf="mensagens.length == 0">
-    <ion-list>
-        <ion-row class="text">
-          <div class="icone-wrapper">
-            <ion-icon name="chatboxes"></ion-icon>
-          </div>
-          <ion-row class="title">
-            Nenhuma mensagem
-          </ion-row>
-          <ion-row class="content">
-            <p>Envie mensagem para o nosso suporte</p>
-          </ion-row>
-        </ion-row>
-    </ion-list>
-  </div><!-- se nao achar nenhuma -->
-
+    <div class="text">
+      <div class="icone-wrapper">
+          <ion-icon name="chatboxes"></ion-icon>
+      </div>
+      <div class="title">
+        Sem mensagem
+      </div>
+      <div class="content">
+        <p>Envie mensagem para o nosso suporte</p>
+      </div>
+    </div>
+  </div><!-- sem resultados -->
+  
   <div class="ver-mais" *ngIf="hasMore" (click)="obterMensagens( true )">
     <span *ngIf="!loading">Ver mais ..</span>
     <ion-spinner *ngIf="loading" ></ion-spinner>

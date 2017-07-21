@@ -176,30 +176,4 @@ page-extrato {
             float: right;
         }
     }
-
-    .dont-have-product {
-        .text {
-            display: inline-block;
-            text-align: center;
-
-            .icone-wrapper {
-                display: inline-block;
-                font-size: 60px;
-                color: #ccc;
-                padding: 50px;
-            }
-
-            .title { 
-                display: inline-block;
-                font-size: 20px;
-                color: #ccc;
-            }
-
-            .content {
-                display: inline-block;
-                color: #ccc;
-                font-size: 12px;
-            }
-        }
-    }
 }

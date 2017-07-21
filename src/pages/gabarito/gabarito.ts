@@ -1,3 +1,4 @@
+import { ListQuizPage } from './../list-quiz/list-quiz';
 import { GabaritoService } from './gabarito.service';
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
@@ -49,5 +50,10 @@ export class GabaritoPage {
     })
     .catch( err => console.log( err ) )
     .then( () => loading.dismiss() );
+  }
+
+  // open listagem de quiz
+  public openList() {
+    this.navCtrl.push( ListQuizPage );
   }
 }

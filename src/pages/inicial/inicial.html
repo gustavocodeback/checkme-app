@@ -35,7 +35,10 @@
   <h4 class="categories-title">Portifólio de produtos</h4>
 
   <ion-scroll scrollX="true" class="horizontal-categories">
-    <ion-row class="categories-row">
+    <div class="scroll-wrapper" *ngIf="loadingCatergorias">
+      <ion-spinner></ion-spinner>
+    </div>
+    <ion-row class="categories-row" *ngIf="!loadingCatergorias">
       <ion-col width-30 class="horizontal-item" *ngFor="let categoria of categorias" (click)="openProdutosList(categoria.CodCategoria)">
         <preload-image [ratio]="{w:1, h:1}" [src]="categoria.Foto" title="categoria.Nome"></preload-image>
       </ion-col>
@@ -44,7 +47,11 @@
 
   <h4 class="categories-title">Módulos</h4>
   
-  <ion-row class="grid-categories">
+  <div class="scroll-wrapper" *ngIf="loadingSquares">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-row class="grid-categories" *ngIf="!loadingSquares">
     <ion-col width-50 class="category-item" *ngFor="let category of inicial.categories">
       <img class="category-heading" [src]="category.image" (click)="openPage( category.page )">
       <h2 class="category-title">{{category.title}}</h2>

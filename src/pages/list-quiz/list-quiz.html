@@ -29,20 +29,16 @@
   </div>
 
   <div class="dont-have-product" *ngIf="questionarios.length == 0">
-    <ion-list>
-        <ion-row class="text">
-          <ion-row>
-            <div class="icone-wrapper">
-              <ion-icon name="construct"></ion-icon>
-            </div>
-          </ion-row>
-          <ion-row class="title">            
-            Nenhum Quiz
-          </ion-row><br>
-          <ion-row class="content">
-            <p>Não foi encontrado nenhum quiz.</p>
-          </ion-row>
-        </ion-row>
-    </ion-list>
-  </div>
+    <div class="text">
+      <div class="icone-wrapper">
+          <ion-icon name="eye-off"></ion-icon>
+      </div>
+      <div class="title">
+        Sem Questionários
+      </div>
+      <div class="content">
+        <p>Não foi encontrado nenhum questionário.</p>
+      </div>
+    </div>
+  </div><!-- sem resultados -->
 </ion-content>

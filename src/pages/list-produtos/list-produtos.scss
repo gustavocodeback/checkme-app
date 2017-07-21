@@ -51,31 +51,5 @@ list-produtos-page {
 				}
 			}
 		}
-		.dont-have-product {
-			.text {
-				display: inline-block;
-				text-align: center;
-				padding-top: 40px;
-
-				.icone-wrapper {
-					display: inline-block;
-					font-size: 60px;
-					color: #ccc;
-					margin-left: calc(50% - 30px);
-				}
-
-				.title { 
-					display: inline-block;
-					font-size: 20px;
-					color: #ccc;
-				}
-
-				.content {
-					display: inline-block;
-					color: #ccc;
-					font-size: 12px;
-				}
-			}
-		}
 	}
 }

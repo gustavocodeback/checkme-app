@@ -14,6 +14,12 @@ inicial-page {
 	$categories-grid-padding: 10px;
 	$categories-horizontal-list-padding: 10px;
 
+	.scroll-wrapper {
+		width: 100vw;
+		text-align: center;
+		padding: 20px;
+	}
+
 	.dados {
 		width: 100%;
 		height: 60px;
@@ -93,7 +99,6 @@ inicial-page {
 
 		.horizontal-categories
 		{
-			border-bottom: 10px solid $white-a;
 			@include element-shadow();
 			padding-bottom: 16px;
 
@@ -132,19 +137,19 @@ inicial-page {
 		{
 			padding: 0px ($categories-grid-padding/2);
 			@include flex-wrap(wrap);
+			border: 0px;
 
 			.category-item
 			{
 				padding: 0px ($categories-grid-padding/2) $categories-grid-padding;
 
 				width: calc( 50vw - 20px );
-				height: calc( 50vw - 20px );
+				height: calc( 50vw + 20px );
 				text-align: center;
 				position: relative;
 
 				img{
-					width: 60%;
-
+					width: 90%;
 				}
 				.category-title
 				{

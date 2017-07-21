@@ -94,7 +94,7 @@ export class MyApp {
     ];
 
     this.pushPages = [
-      { title: 'Termos e condições', icon: 'document', component: TermsOfServicePage },    
+      { title: 'Regulamento', icon: 'document', component: TermsOfServicePage },    
       { title: 'Suporte', icon: 'people', component: SuportePage },
       { title: 'Extrato', icon: 'barcode', component: ExtratoPage },
     ];

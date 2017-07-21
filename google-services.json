@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "121979806569",
+    "firebase_url": "https://neotass-96310.firebaseio.com",
+    "project_id": "neotass-96310",
+    "storage_bucket": "neotass-96310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121979806569:android:489de5f3d392b392",
+        "android_client_info": {
+          "package_name": "partiuvender.codeback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121979806569-ggjjupfvbhr30sh3qsd6rgohli4id4q3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8B_m2nr2yIl00QUyMSGMakmrSqXSQCbs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

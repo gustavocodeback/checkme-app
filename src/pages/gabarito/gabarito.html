@@ -1,7 +1,12 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>Gabarito</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+      <button (click)="openList()" ion-button>
+        Fechar
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="quiz-content">
@@ -27,5 +32,23 @@
           <ion-label>D ) {{ item['Alternativa4'] }}</ion-label>
         </ion-item>
       </ion-list>
+  </div>
+
+  <div class="dont-have-product" *ngIf="perguntas.length == 0">
+    <div class="text">
+      <div class="icone-wrapper">
+          <ion-icon name="eye-off"></ion-icon>
+      </div>
+      <div class="title">
+        Visualização não disponível
+      </div>
+      <div class="content">
+        <p>Aguarde ou tente novamente mais tarde</p>
+      </div>
+    </div>
+  </div><!-- sem resultados -->
+
+  <div padding>
+    <button (click)="openList()" round block ion-button color="primary">Voltar</button>
   </div>
 </ion-content>

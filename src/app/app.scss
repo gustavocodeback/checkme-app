@@ -68,3 +68,32 @@ table.c11 {
         padding: 2px;
     }
 }
+
+.dont-have-product {
+    .text {
+        display: inline-block;
+        text-align: center;
+        padding-top: 40px;
+
+        .icone-wrapper {
+            display: inline-block;
+            font-size: 60px;
+            color: #ccc;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        .title { 
+            display: inline-block;
+            font-size: 20px;
+            color: #ccc;
+        }
+
+        .content {
+            display: inline-block;
+            color: #ccc;
+            font-size: 12px;
+        }
+    }
+}

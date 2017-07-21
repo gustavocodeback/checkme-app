@@ -17,23 +17,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ranking-content">
   <ion-list>    
     <ion-item *ngFor=" let item of lista; let i = index " [ngClass]=" item.uid == uid ? 'notification-item selected': 'notification-item' ">
       <ion-avatar item-start>
-        <preload-image [ratio]="{ h: 1, w: 1 }" [src]="item.foto ? item.foto : '/assets/images/avatar.png'"></preload-image>
+        <preload-image [ratio]="{ h: 1, w: 1 }" [src]="item.foto ? item.foto : './assets/images/avatar.png'"></preload-image>
       </ion-avatar>
       <h2 class="item-title">{{i+1}}º - {{ item.nome }}</h2>      
       <p class="item-description" style='white-space: normal'>{{ item.pontos ? item.pontos : 0  }} pontos</p>
     </ion-item>      
   </ion-list>
+  <div class="ranking-divider"></div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar *ngIf="pos">
     <ion-item>
       <ion-avatar item-start>
-        <preload-image [ratio]="{ h: 1, w: 1 }" [src]="pos.foto ? pos.foto : '/assets/images/avatar.png'"></preload-image>
+        <preload-image [ratio]="{ h: 1, w: 1 }" [src]="pos.foto ? pos.foto : './assets/images/avatar.png'"></preload-image>
       </ion-avatar>
       <h2 class="item-title">{{pos.ranking}}º - {{ pos.nome }}</h2>      
       <p class="item-description" style='white-space: normal'>{{pos.pontos}} pontos</p>

@@ -17,6 +17,10 @@ export class InicialPage {
   inicial: InicialModel = new InicialModel();
   loading: any;
 
+  public loadingCatergorias = false;
+
+  public loadingSquares = false;
+
   // cateogorias
   public categorias = [];
 
@@ -37,15 +41,20 @@ export class InicialPage {
     this.loading = this.loadingCtrl.create();
   }
 
+  // quando carregar
   ionViewDidLoad() {
-    this.loading.present();
+    
+
+    // mostra o loading
+    this.loadingSquares = true;
+
+    // chama a api
     this.inicialService
     .getData()
     .then( data => {
-      this.inicial.banner_image = data.banner_image;
-      this.inicial.banner_title = data.banner_title;
       this.inicial.categories = data.categories;
-    });
+    })
+    .then( () => this.loadingSquares = false );
 
     this.ranking.obterMinhaPosicao()
     .then( usr => {
@@ -53,13 +62,13 @@ export class InicialPage {
       this.pontos = usr.pontos;
     });
 
-    this.inicialService.obterCategorias()
-    .then( Categorias => {
-      console.log(Categorias);
-      this.categorias = Categorias;
-    }).catch( err => console.log( err ) )
-    .then( () =>    this.loading.dismiss() );
+    // exibe o loading
+    this.loadingCatergorias = true;
 
+    this.inicialService.obterCategorias()
+    .then( Categorias => this.categorias = Categorias )
+    .catch( err => console.log( err ) )
+    .then( () => this.loadingCatergorias = false );
   }
 
   // abre a listagem de produtos

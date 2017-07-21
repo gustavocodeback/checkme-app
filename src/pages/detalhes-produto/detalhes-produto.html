@@ -29,7 +29,7 @@
     </div>  
   </div><!-- quantidade de pontos -->
 
-  <div class="content">
+  <div class="content" *ngIf="produto['Descricao']">
     <h4 class="categories-title">Descrição</h4> 
     <p>{{produto['Descricao']}}</p>   
   </div><!-- descricao do produto -->

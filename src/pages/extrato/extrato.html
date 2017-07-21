@@ -33,20 +33,18 @@
   </ion-list><!-- extratosgem das transacoes -->
 
   <div class="dont-have-product" *ngIf="extratos.length == 0">
-    <ion-list>
-        <ion-row class="text">
-          <div class="icone-wrapper">
-            <ion-icon name="construct"></ion-icon>
-          </div>
-          <ion-row class="title">
-            Nenhuma transação
-          </ion-row>
-          <ion-row class="content">
-            <p>Nenhuma transação foi encontrada nessa conta</p>
-          </ion-row>
-        </ion-row>
-    </ion-list>
-  </div><!-- se nao achar nenhuma -->
+    <div class="text">
+      <div class="icone-wrapper">
+          <ion-icon name="eye-off"></ion-icon>
+      </div>
+      <div class="title">
+        Nenhuma transação
+      </div>
+      <div class="content">
+        <p>Nenhuma transação foi encontrada nessa conta</p>
+      </div>
+    </div>
+  </div><!-- sem resultados -->
 
   <div class="ver-mais" *ngIf="hasMore" (click)="obterExtrato( true )">
     <span *ngIf="!loading">Ver mais ..</span>
