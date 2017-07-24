@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Samsung
+      Samsung - BrandShop
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -39,7 +39,7 @@
       <ion-spinner></ion-spinner>
     </div>
     <ion-row class="categories-row" *ngIf="!loadingCatergorias">
-      <ion-col width-30 class="horizontal-item" *ngFor="let categoria of categorias" (click)="openProdutosList(categoria.CodCategoria)">
+      <ion-col width-25 class="horizontal-item" *ngFor="let categoria of categorias" (click)="openProdutosList(categoria.CodCategoria)">
         <preload-image [ratio]="{w:1, h:1}" [src]="categoria.Foto" title="categoria.Nome"></preload-image>
       </ion-col>
     </ion-row>
