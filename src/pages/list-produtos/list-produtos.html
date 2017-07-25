@@ -15,24 +15,7 @@
             <preload-image  *ngIf="!item.Foto" class="avatar-image" [ratio]="{w:1, h:1}" [src]="categoria.Foto"></preload-image>
           </ion-col>
 
-          <ion-col no-padding width-57 class="item-content" *ngIf="item['Video'] || item['Descricao']">
-            <div class="content-row">              
-              <ion-row>
-            
-                <ion-col no-padding>           
-                  <h3 class="item-title">{{item.Nome}}</h3>
-                </ion-col>
-
-              </ion-row>
-              <ion-row no-padding *ngIf="item['Descricao']">
-                <ion-col no-padding>
-                  <p class="item-description" rows="3">{{item.Descricao}}</p>
-                </ion-col>
-              </ion-row>
-            </div>
-          </ion-col><!-- se tiver video ou descricao -->
-
-          <ion-col no-padding width-57 class="item-content"  *ngIf="!item['Video'] && !item['Descricao']">
+          <ion-col no-padding width-57 class="item-content">
             <div class="content-row">
               <ion-row>          
                 <ion-col no-padding>           

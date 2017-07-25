@@ -1,3 +1,4 @@
+import { DadosModalPage } from './../dados-modal/dados-modal';
 import { PictureProvider } from './../../providers/picture/picture';
 import { ValidateProvider } from './../../providers/validate/validate';
 import { AuthProvider } from './../../providers/auth/auth';
@@ -311,5 +312,9 @@ public initForm() {
     // mostra o alert
     alert.present();
     return false;
+  }
+
+  public showDados() {
+    this.nav.push( DadosModalPage, { edita : true } );
   }
 }

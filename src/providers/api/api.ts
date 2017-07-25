@@ -107,7 +107,7 @@ export class ApiProvider {
 
       // pega a resposta
       req.toPromise().then( data => {
-
+        
         // pega a resposta
         const body = data.json();
 

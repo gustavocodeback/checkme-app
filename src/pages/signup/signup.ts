@@ -1,6 +1,8 @@
+import { ApiProvider } from './../../providers/api/api';
+import { ValidateProvider } from './../../providers/validate/validate';
 import { Component } from '@angular/core';
 import { NavController, ModalController, LoadingController } from 'ionic-angular';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { TermsOfServicePage } from '../terms-of-service/terms-of-service';
 import { PrivacyPolicyPage } from '../privacy-policy/privacy-policy';
 import { TabsNavigationPage } from '../tabs-navigation/tabs-navigation';
@@ -22,27 +24,103 @@ export class SignupPage {
   // loading
   public loading: any;
 
+  // estados
+  public estados = [];
+
+  // cidades
+  public cidades = [];
+
   // erros no formulario
-  public hasError: any = false;
+  public hasError: any = false;  
+
+  public validate: ValidateProvider;
 
   // método construtor
   constructor(
     public loadingCtrl: LoadingController,
     public modal: ModalController,
     public nav: NavController,
-    public auth: AuthProvider
+    public auth: AuthProvider,
+    public api : ApiProvider
   ) {
 
     // seta a pagina principal
     this.main_page = { component: TabsNavigationPage };
 
     // seta o formulario de login
-    this.signup = new FormGroup({
-      cpf: new FormControl( '', Validators.required ),
-      email: new FormControl( '', Validators.required ),
-      password: new FormControl( '', Validators.required ),
-      confirm_password: new FormControl( '', Validators.required )
-    });
+    this.initForm();
+  }
+
+  public initForm() {
+    
+    this.loading = this.loadingCtrl.create( { content : 'Carregando perfil...' } );
+    this.loading.present();
+
+    // inicia um novo validator
+    this.validate = new ValidateProvider();
+
+    // seta as regras de validacao
+    const rules = [
+      {
+        field: 'email',
+        rules: 'required|valid_email'
+      }, {
+        field: 'cpf',
+        rules: 'required|valid_cpf'
+      }, {
+        field: 'rg',
+        rules: 'required'
+      }, {
+        field: 'cep',
+        rules: 'required|maxLength[8]|minLength[8]'
+      }, {
+        field: 'complemento',
+        rules: 'required|maxLength[40]|minLength[5]'
+      }, {
+        field: 'estado',
+        rules: 'required'
+      }, {
+        field: 'cidade',
+        rules: 'required'
+      }, {
+        field: 'celular',
+        rules: 'required|maxLength[11]|minLength[11]'
+      }, {
+        field: 'numero',
+        rules: 'required|maxLength[4]|minLength[2]'
+      }, {
+        field: 'endereco',
+        rules: 'required|maxLength[50]|minLength[6]'
+      }, {
+        field: 'password',
+        rules: 'required|maxLength[18]|minLength[6]|matches[novasenha]' 
+      }, {
+        field: 'confirm_password',
+        rules: 'required|maxLength[18]|minLength[6]|matches[senha]'
+      }
+    ];
+
+    // busca os estados na api
+    this.api.get( '/api/obter_estados/' )
+    .then( estados => this.estados = estados )
+    .catch( err => console.log( err ) );
+
+    // seta o formulario
+    this.signup = this.validate.set_form(rules);
+
+    this.loading.dismiss();
+  }
+
+  // busca as cidades quando um estado é selecionado
+  public selecionaEstado( CodEstado ) {
+    
+    // volta para o valor inicial
+    this.cidades = [];
+
+    // busca as cidades do estado selecionado na api
+    this.api.get( '/api/obter_cidades_estados/' + CodEstado )
+    .then( cidades => this.cidades = cidades )
+    .catch( err => console.log( err ) );
   }
 
   // faz o signup

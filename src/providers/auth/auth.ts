@@ -79,7 +79,7 @@ export class AuthProvider {
           localStorage.setItem( 'cluster', res['cluster'] );
 
           // da resolve no usuario
-          resolve( user );
+          resolve( res );
         })
         .catch( err => {
           console.log( err );
@@ -134,28 +134,42 @@ export class AuthProvider {
       this.api.get( `/api/verificar_cpf/${dados['cpf']}` )
       .then( func => {
 
-        // cria o usuario com o firebase
-        firebase.auth()
-        .createUserWithEmailAndPassword( dados['email'], dados['password'] ).then( u => {
+        console.log(dados);
 
-          // cria o objeto do usuario
-          const obj = {
-            [dados['cpf']] : {
-              uid: u.uid,
-              foto: null,
-              email: dados['email'],
-              created: new Date().getTime()
-            }
-          };
+        this.api.post( `/api/salvar_dados`, {
+          cpf         : dados['cpf'],
+          endereco    : dados['endereco'],
+          numero      : dados['numero'],
+          celular     : dados['celular'],
+          cep         : dados['cep'],
+          complemento : dados['complemento'],
+          estado      : dados['estado'],
+          cidade      : dados['cidade'],
+          rg          : dados['rg']
+        }).then( sucesso => {
 
-          // cria no firebase
-          firebase.database().ref( `/usuarios` ).update( obj )
-          .then( usr => resolve( usr ) )
+          // cria o usuario com o firebase
+          firebase.auth()
+          .createUserWithEmailAndPassword( dados['email'], dados['password'] ).then( u => {
+
+            // cria o objeto do usuario
+            const obj = {
+              [dados['cpf']] : {
+                uid: u.uid,
+                foto: null,
+                email: dados['email'],
+                created: new Date().getTime()
+              }
+            };
+
+            // cria no firebase
+            firebase.database().ref( `/usuarios` ).update( obj )
+            .then( usr => resolve( usr ) )
+            .catch( err => reject( err['code'] ) );
+            
+          })
           .catch( err => reject( err['code'] ) );
-          
-        })
-        .catch( err => reject( err['code'] ) );
-
+        }).catch( err => reject( err ) );
       })
       .catch( err => reject( err ) );
     });

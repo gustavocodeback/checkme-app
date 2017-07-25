@@ -1,3 +1,4 @@
+import { DadosModalPage } from './../pages/dados-modal/dados-modal';
 import { ListCartoesService } from './../pages/list-cartoes/list-cartoes.service';
 import { ListCartoesPage } from './../pages/list-cartoes/list-cartoes';
 import { SuportePage } from './../pages/suporte/suporte';
@@ -83,7 +84,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     GabaritoPage,
     RankingPage,
     ExtratoPage,
-    SuportePage
+    SuportePage,
+    DadosModalPage
   ],
   imports: [
     BrowserModule,
@@ -115,7 +117,8 @@ import { ClearPipe } from '../pipes/clear/clear';
     GabaritoPage,
     RankingPage,
     ExtratoPage,
-    SuportePage
+    SuportePage,
+    DadosModalPage
   ],
   providers: [
     InicialService,

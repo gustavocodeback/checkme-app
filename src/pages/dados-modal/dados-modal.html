@@ -1,16 +1,7 @@
-<ion-header class="signup-header auth-header">
-  <ion-navbar>
-    <ion-title>Cadastrar</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content class="signup-content auth-content">
-  <h2 class="auth-title">Criar uma conta</h2>
+  <h2 class="auth-title">Os dados abaixo são necessários</h2>
 
-  <form class="signup-form auth-form" [formGroup]="signup" (ngSubmit)="doSignup()">
-    <ion-item>
-      <ion-input type="number" placeholder="CPF" formControlName="cpf"></ion-input>
-    </ion-item>
+  <form class="signup-form auth-form" [formGroup]="dados" (ngSubmit)="salvarDados()">
     <ion-item>
       <ion-input type="number" placeholder="RG" formControlName="rg"></ion-input>
     </ion-item>    
@@ -42,27 +33,10 @@
         <ion-option [value]="item.CodCidade" *ngFor="let item of cidades">{{item.nome}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
-    </ion-item>
-    <show-hide-container>
-      <ion-item>
-        <ion-input type="password" placeholder="Senha" formControlName="password" show-hide-input></ion-input>
-      </ion-item>
-    </show-hide-container>
-    <show-hide-container>
-      <ion-item>
-        <ion-input type="password" placeholder="Confirme a senha" formControlName="confirm_password" show-hide-input></ion-input>
-      </ion-item>
-    </show-hide-container>
     <br>
     <div class="has-error" *ngIf="hasError">{{ hasError | errors }}</div>
-    <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="!signup.valid">
-      Criar conta
+    <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="!dados.valid">
+      Salvar
     </button>
   </form><!-- formulario de login -->
-
-  <p class="legal-stuff">
-    Criando esta conta você concorda com os <a class="legal-action" (click)="showTermsModal()">Regulamentos</a>
-  </p>
 </ion-content>

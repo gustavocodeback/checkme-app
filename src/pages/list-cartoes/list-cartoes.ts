@@ -73,6 +73,9 @@ export class ListCartoesPage {
         {
           name: 'codigo',
           placeholder: 'Código'
+        }, {
+          name: 'confirmacodigo',
+          placeholder: 'Confirmar Código'
         },
       ],
       buttons: [
@@ -85,6 +88,7 @@ export class ListCartoesPage {
         {
           text: 'Confirmar',
           handler: data => {
+            if( data.codigo != data.confirmacodigo ) return this.conclusao( false, 'Codigos não conferem!' )
             this.listCartoesService.usarCartao( data.codigo )
             .then( cartao => {
               if( cartao['status'] == 'A' ) cartao['status'] = 'Aberto';

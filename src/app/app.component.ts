@@ -1,3 +1,4 @@
+import { DadosModalPage } from './../pages/dados-modal/dados-modal';
 import { ListCartoesPage } from './../pages/list-cartoes/list-cartoes';
 import { SuportePage } from './../pages/suporte/suporte';
 import { ExtratoPage } from './../pages/extrato/extrato';
@@ -73,7 +74,9 @@ export class MyApp {
           this.user = userObj;
 
           // vai para a pagina inicial
-          this.nav.setRoot( TabsNavigationPage );
+          if( userObj['modal'] ) this.nav.setRoot( DadosModalPage, { edita : false } );
+          else this.nav.setRoot( TabsNavigationPage );
+
         }).catch( err => console.log( err ) )
         .then( () => loading.dismiss() );
       } else {
