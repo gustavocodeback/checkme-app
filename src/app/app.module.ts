@@ -1,3 +1,5 @@
+import { ListCartoesService } from './../pages/list-cartoes/list-cartoes.service';
+import { ListCartoesPage } from './../pages/list-cartoes/list-cartoes';
 import { SuportePage } from './../pages/suporte/suporte';
 import { ListTreinamentosService } from './../pages/list-treinamentos/list-treinamentos.service';
 import { ListTreinamentosPage } from './../pages/list-treinamentos/list-treinamentos';
@@ -60,6 +62,7 @@ import { ClearPipe } from '../pipes/clear/clear';
     ForgotPasswordPage,
     ListProdutosPage,
     ListTreinamentosPage,
+    ListCartoesPage,
     TermsOfServicePage,
     PrivacyPolicyPage,
     DetalhesProdutoPage,
@@ -99,6 +102,7 @@ import { ClearPipe } from '../pipes/clear/clear';
     ListQuizPage,
     DetalhesQuizPage,
     ListTreinamentosPage,
+    ListCartoesPage,
     ListProdutosPage,
     ListNotificacoesPage,
     DetalhesNotificacaoPage,
@@ -118,6 +122,7 @@ import { ClearPipe } from '../pipes/clear/clear';
     ListProdutosService,
     ListNotificacoesService,
     ListTreinamentosService,
+    ListCartoesService,
     Camera,
 	  SplashScreen,
 	  StatusBar,

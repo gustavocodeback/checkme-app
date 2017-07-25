@@ -1,3 +1,4 @@
+import { ListCartoesPage } from './../pages/list-cartoes/list-cartoes';
 import { SuportePage } from './../pages/suporte/suporte';
 import { ExtratoPage } from './../pages/extrato/extrato';
 import { PerfilPage } from './../pages/perfil/perfil';
@@ -90,7 +91,8 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Início', icon: 'home', component: TabsNavigationPage },
+      { title: 'Início', icon: 'home', component: TabsNavigationPage },      
+      { title: 'Cartões', icon: 'card', component: ListCartoesPage },
     ];
 
     this.pushPages = [

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Samsung - BrandShop
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="list-big-content">
+  <div class="list-big" *ngIf="cartoes.length > 0">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of cartoes">
+        <ion-row>
+          
+          <ion-col no-padding class="item-content">           
+            <h3 class="item-title">{{item.Codigo}}</h3>
+          </ion-col>
+
+        </ion-row>
+        <ion-row no-padding class="content-row">
+          <ion-col no-padding class="item-content">
+            <p class="item-description" >R${{item.Valor}}</p>
+          </ion-col>
+          <ion-col no-padding class="item-content">
+            <p class="item-description" >{{item.Status}}</p>
+          </ion-col>
+        </ion-row>        
+      </button>
+      <ion-infinite-scroll *ngIf="cartoes.length > 0 && hasMore" (ionInfinite)="obterCartoes( $event )">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-list>
+  </div>
+  
+  <div class="dont-have-product" *ngIf="cartoes.length == 0">
+    <div class="text">
+      <div class="icone-wrapper">
+          <ion-icon name="eye-off"></ion-icon>
+      </div>
+      <div class="title">
+        Sem Cartões
+      </div>
+      <div class="content">
+        <p>Não foi encontrado nenhum cartão.</p>
+      </div>
+    </div>
+  </div><!-- sem resultados -->
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="novoCartao()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
