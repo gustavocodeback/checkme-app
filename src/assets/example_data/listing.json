@@ -29,13 +29,33 @@
     ],
     "categories": [
         {
-            "title" : "Treinamento",
-            "image" : "./assets/images/listing/treinamento.png",
-            "page"  : "ListTreinamentosPage"
-        }, {
-            "title": "Quiz",
-            "image": "./assets/images/listing/quiz.png",
-            "page" : "ListQuizPage"
+            "title": "Basketball",
+            "image": "./assets/images/listing/200x200basquet.png"
+        },
+        {
+            "title": "Boxing",
+            "image": "./assets/images/listing/200x200boxeo.png"
+        },
+        {
+            "title": "Crossfit",
+            "image": "./assets/images/listing/200x200crossfit.png"
+        },
+        {
+            "title": "Futbol",
+            "image": "./assets/images/listing/200x200futbol.png"
+        },
+        {
+            "title": "Running",
+            "image": "./assets/images/listing/200x200running.png"
+        },
+        {
+            "title": "Swimming",
+            "image": "./assets/images/listing/200x200swimming.png"
+        },
+        {
+            "title": "Yoga",
+            "image": "./assets/images/listing/200x200yoga.png"
         }
+
     ]
 }

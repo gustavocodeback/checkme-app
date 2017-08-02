@@ -1,20 +1,10 @@
 login-page {
-
-	.logo {
-		width: 100%;
-		height: 200px;
-		text-align: center;
-
-		.logo-content {
-			display: inline-block;
-			height: 200px;
-			width: 200px;
-		}
-	}
-	
-	.login-content {
-		.alt-options {
-			.button {
+	.login-content
+	{
+		.alt-options
+		{
+			.button
+			{
 				margin: 0px;
 				padding: 0px;
 				font-size: 1.4rem;

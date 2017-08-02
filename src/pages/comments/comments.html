@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons right>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Comentários</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let item of comments">
+      <ion-avatar item-left>
+        <preload-image [ratio]="{h: 1, w: 1 }" [src]="item.foto"></preload-image>
+      </ion-avatar>
+      <h2>{{ item.nome }}</h2>
+      <p>{{ item.mensagem }}</p>
+    </ion-item>
+</ion-content>
+
+<ion-footer padding style="border-top: 1px solid #fff; background: #fff;">
+  <ion-input class="light-input" placeholder="Deixe seu comentário" style="padding: 5px;" [(ngModel)]="text"></ion-input>
+  <button ion-button block round (click)="send()">
+    Comentar
+  </button>
+</ion-footer><!-- fim do footer -->

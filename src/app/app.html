@@ -1,37 +1,13 @@
 <ion-menu [content]="content" [swipeEnabled]="false">
   <ion-content class="menu-content">
-
-    <div class="avatar-menu">
-      <div class="avatar-wrapper">
-        <div class="avatar-content">
-          <preload-image [ratio]="{w:1, h: 1}" [src]="user['foto']" *ngIf="user['foto']"></preload-image> 
-          <preload-image [ratio]="{w:1, h: 1}" src="assets/images/avatar.png" *ngIf="!user['foto']"></preload-image>          
-        </div>
-      </div>
-      <div class="name-wrapper">
-        {{user['nome']}}
-      </div>
-      <ion-row class="button-wrapper">
-        <ion-col></ion-col>
-        <ion-col>
-          <button ion-button block small (click)="openEditProfile()">Editar perfil</button>          
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-    </div><!-- avatar -->
-
     <ion-list class="menu-list">
       <button ion-item detail-none *ngFor="let page of pages" (click)="openPage(page)">
-        <ion-icon *ngIf="page.icon" [name]="page.icon" item-left></ion-icon>
+        <ion-icon *ngIf="page.icon" name="{{page.icon}}" item-left></ion-icon>
         {{page.title}}
       </button>
       <button ion-item detail-none *ngFor="let page of pushPages" (click)="pushPage(page)">
-        <ion-icon *ngIf="page.icon" [name]="page.icon" item-left></ion-icon>
+        <ion-icon *ngIf="page.icon" name="{{page.icon}}" item-left></ion-icon>
         {{page.title}}
-      </button>
-      <button ion-item detail-none (click)="logout()">
-        <ion-icon name="close" item-left></ion-icon>
-        Sair
       </button>
     </ion-list>
   </ion-content>

@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Adicionar evento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="forms-examples-content">
+  <div class="forms-wrapper">
+    <div class="event-example-view">
+      <form class="sample-form event-form" [formGroup]="form">
+
+        <div class="image-select" (click)="getPic()">
+          <ion-icon name="camera"></ion-icon>
+          <span>Escolher uma foto</span>
+          <img [src]="foto" *ngIf="foto">
+        </div><!-- input da camera -->
+
+        <section class="form-section">
+
+          <h2 class="section-title">Adicionar um evento</h2>
+          
+          <ion-item>
+            <ion-label>Categoria</ion-label>
+            <ion-select formControlName="categoria">
+              <ion-option *ngFor="let c of categorias" [value]="c['id']">
+                {{ c['categoria'] }}
+              </ion-option>
+            </ion-select>
+          </ion-item><!-- categoria -->
+
+          <ion-item *ngIf="!mostrar">
+            <ion-label>Estabelecimento</ion-label>
+            <ion-select formControlName="local" (change)="arrumarFormulario()">
+              <ion-option *ngFor="let c of locais" [value]="c['id']">
+                {{ c['nome'] }}
+              </ion-option>
+              <ion-option value="outro">Outro</ion-option>
+            </ion-select>
+          </ion-item><!-- categoria -->
+
+          <ion-item *ngIf="mostrar || this.form.value.local === 'outro'">
+            <ion-label>Cidade</ion-label>
+            <ion-select formControlName="cidade">
+              <ion-option *ngFor="let c of cidades" [value]="c['id']">
+                {{ c['cidade'] }}
+              </ion-option>
+            </ion-select>
+          </ion-item><!-- categoria -->
+
+          <ion-item>
+            <ion-input formControlName="nome" type="text" placeholder="Nome do evento"></ion-input>
+          </ion-item><!-- nome do evento -->
+
+          <ion-item>
+            <ion-textarea formControlName="desc" placeholder="Descrição"></ion-textarea>
+          </ion-item><!-- descricao -->
+
+          <ion-item *ngIf="mostrar || this.form.value.local === 'outro'" icon-right>
+            <ion-input type="text" formControlName="endereco" placeholder="Endereço"></ion-input>
+            <ion-icon name="navigate" item-right></ion-icon>
+          </ion-item><!-- endereco -->
+
+          <ion-item *ngIf="mostrar || this.form.value.local === 'outro'" icon-right>
+            <ion-input type="text" placeholder="Contato" formControlName="contato"></ion-input>
+            <ion-icon name="call" item-right></ion-icon>
+          </ion-item><!-- contato -->
+
+          <ion-row no-padding class="multi-input-row">
+            <ion-col no-padding width-60>
+              <ion-item class="multi-input time-item">
+                <ion-label floating>Dia e hora</ion-label>
+                <ion-datetime formControlName="data" displayFormat="DD/MM/YY" pickerFormat="YYYY-MM-DD"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col no-padding width-40>
+              <ion-item class="multi-input time-item">
+                <ion-datetime formControlName="hora" 
+                              displayFormat="h mm a" 
+                              pickerFormat="h mm A"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row><!-- horas -->
+
+        </section>
+
+        <div *ngIf="hasError" class="error-content">
+          {{ hasError  }}
+        </div>
+
+        <section class="form-section">
+          <button ion-button 
+                  block 
+                  (click)="enviarEvento()"
+                  class="form-action-button create-event-button" 
+                  [disabled]="!form.valid">
+            Enviar evento
+          </button>
+        </section>
+      </form>
+    </div>
+  </div>
+</ion-content>

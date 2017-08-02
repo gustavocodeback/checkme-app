@@ -9,7 +9,8 @@ import { isPresent } from 'ionic-angular/util/util';
 export class PreloadImage implements OnChanges {
 	_src: string = '';
 	_ratio: { w: number, h: number };
-  _img: any;
+	_img: any;
+	_error = './assets/images/empty.png';
 
 	constructor(public _elementRef: ElementRef, public _renderer: Renderer) {
     this._img = new Image();
@@ -29,12 +30,8 @@ export class PreloadImage implements OnChanges {
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     let ratio_height = (this._ratio.h / this._ratio.w * 100)+"%";
-		// Conserve aspect ratio (see: http://stackoverflow.com/a/10441480/1116959)
 		this._renderer.setElementStyle(this._elementRef.nativeElement, 'padding-bottom', ratio_height);
-
     this._update();
-    // console.log("CHANGES preload-image", this._src);
-    // console.log(changes['src'].isFirstChange());
   }
 
 	_update() {
@@ -44,14 +41,14 @@ export class PreloadImage implements OnChanges {
 	  if (isPresent(this.title)) {
 	    this._img.title = this.title;
 	  }
-
 	  this._img.addEventListener('load', () => {
       this._elementRef.nativeElement.appendChild(this._img);
 			this._loaded(true);
-	  });
-
+		});
+		this._img.addEventListener( 'error', () => {
+			this._img.src = this._error;
+		})
 	  this._img.src = this._src;
-
 	  this._loaded(false);
 	}
 

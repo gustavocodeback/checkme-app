@@ -8,6 +8,7 @@ import { isPresent } from 'ionic-angular/util/util';
 })
 export class BackgroundImage implements OnChanges {
 	_src: string = '';
+	_error = './assets/images/empty.png';
 
 	constructor(public _elementRef: ElementRef, public _renderer: Renderer) {}
 
@@ -29,6 +30,9 @@ export class BackgroundImage implements OnChanges {
 	  img.addEventListener('load', () => {
       this._elementRef.nativeElement.style.backgroundImage = 'url(' + this._src + ')';
 			this._loaded(true);
+		});
+		img.addEventListener('error', () => {
+      img.src = this._error;
 	  });
 
 	  img.src = this._src;

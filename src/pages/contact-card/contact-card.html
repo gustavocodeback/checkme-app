@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ place['nome'] ? place['nome'] : 'Carregando...' }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="contact-card-content">
+
+  <div class="contact-slides" pager="true" autoplay="4000" loop="false">
+    <div class="contact-slide">
+      <background-image class="slide-image" [src]="place['foto']"></background-image>
+    </div>
+  </div>
+
+  <ion-row class="contact-details-row" wrap>
+    <ion-col no-padding width-65>
+      <h2 class="contact-name">{{ place['nome'] }}</h2>
+    </ion-col>
+    <ion-col no-padding width-100>
+      <p class="contact-description">
+       {{ place['dias_semana'] }} <br>
+       {{ place['funcionamento'] }}
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <div class="button-bar">
+    <button ion-button primary (click)="call(place['telefone'] )">
+      <ion-icon name="call"></ion-icon>
+    </button>
+    <button ion-button primary (click)="favoritar( place['id'] )">
+      <ion-icon name="heart" [isActive]="place['favorito']" ></ion-icon>
+    </button>
+    <button ion-button primary (click)="comments()">
+      <ion-icon name="chatbubbles"></ion-icon>
+    </button>
+  </div>
+  
+  <div #map id="map" class="my-map"></div>
+
+  <ion-list class="details-list">
+    <ion-item class="detail-item">
+      <ion-avatar item-left>
+        <ion-icon name="pin"></ion-icon>
+      </ion-avatar>
+      <span class="detail-text">{{ place['endereco'] }}</span>
+    </ion-item>
+    <ion-item class="detail-item">
+      <ion-avatar item-left>
+        <ion-icon name="call"></ion-icon>
+      </ion-avatar>
+      <span class="detail-text">{{ place['telefone'] }}</span>
+    </ion-item>
+  </ion-list>
+
+  <div class="btn-content" style="text-align: center; padding: 10px;">
+    <button (click)="abrir()" ion-button icon-left outline round>
+      <ion-icon name="eye"></ion-icon>
+      Ver programação
+    </button>
+  </div>
+</ion-content>

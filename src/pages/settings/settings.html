@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Configurações</ion-title>
+    <ion-buttons end [hidden]="!form.valid">
+      <button ion-button (click)="salvarDados()">
+        Salvar
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <div class="user-image-content">
+    <ion-row no-padding class="user-image-row">
+      <ion-col no-padding width-40>
+        <preload-image (click)="getPic()" class="user-image" [ratio]="{w:1, h: 1}" [src]="pic" *ngIf="pic"></preload-image> 
+        <preload-image (click)="getPic()" class="user-image" [ratio]="{w:1, h: 1}" src="assets/images/empty.png" *ngIf="!pic"></preload-image> 
+      </ion-col>
+    </ion-row>
+    <h3 class="image-action" (click)="getPic()">Mudar foto de perfil</h3>
+  </div>
+
+  <form [formGroup]="form" class="settings-form">
+
+    <ion-list class="user-data-content">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Cidade</ion-label>
+        <ion-input type="text" formControlName="cidade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="meuemail@email.com"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Senha Nova</ion-label>
+        <ion-input type="password" formControlName="senha" placeholder="******"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Senha Atual</ion-label>
+        <ion-input type="password" formControlName="novaSenha" placeholder="******"></ion-input>
+      </ion-item>
+    </ion-list>
+
+  </form>
+
+  <button class="alt-button" ion-button full (click)="showPrivacyModal()">Termos de uso</button>
+
+  <button class="alt-button" ion-button full (click)="showTermsModal()">Contato</button>
+
+  <button class="alt-button logout-button" ion-button full icon-left (click)="logout()">
+    <ion-icon name="log-out"></ion-icon>
+    Sair
+  </button>
+</ion-content>

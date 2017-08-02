@@ -22,9 +22,9 @@ $black-b: lighten($black, 20%);
 $black-c: lighten($black, 40%);
 $black-d: lighten($black, 60%);
 
-$theme-color-1: #1428A0;
-$theme-color-2: #0077C8;
-$theme-color-3: #616161;
+$theme-color-1: #05476A;
+$theme-color-2: #6996AB;
+$theme-color-3: #5e5874;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -54,7 +54,7 @@ $colors: (
     contrast: $white
   ),
   header:(
-    base: $theme-color-2,
+    base: $theme-color-1,
     contrast: $white
   ),
   header-alt:(
@@ -87,7 +87,7 @@ $colors: (
   ),
   tabs-navigation:(
     base: $white,
-    contrast: $theme-color-2
+    contrast: $white-d
   )
 );
 

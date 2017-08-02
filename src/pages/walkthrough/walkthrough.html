@@ -1,0 +1,17 @@
+<ion-content class="walkthrough-content">
+  <section class="slide-4">
+    <ion-row class="intro-image-row">
+      <ion-col center width-64 no-padding>
+        <preload-image [ratio]="{w:1, h:1}" src="./assets/images/slide-4-img.png" alt="slide 4 img" title="ion2FullApp"></preload-image>
+      </ion-col>
+    </ion-row>
+    <h2 class="main-title">Bem-vindo!</h2>
+    <p class="intro-text">
+      Entre no checkme.
+    </p>
+    <div class="button-bar">
+      <button ion-button primary (click)="goToLogin()">Entrar</button>
+      <button ion-button primary (click)="goToSignup()">Cadastrar</button>
+    </div>
+  </section>
+</ion-content>

@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meus Eventos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="profile-content">
+
+  <div class="user-details">
+    <ion-row class="user-main-data-row">
+      <ion-col no-padding width-33>
+        <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="foto"></preload-image>
+      </ion-col>
+    </ion-row>
+    <ion-row wrap class="user-bio-row">
+      <ion-col no-padding width-50>
+        <h2 class="user-name">
+          <small>
+            {{ user['nome'] }}
+          </small>
+        </h2>
+      </ion-col>
+      <ion-col no-padding width-50>
+        <span class="user-location">{{ user['email'] }}</span>
+      </ion-col>
+    </ion-row>
+  </div><!-- detalhes do usuario -->
+
+  <!-- loading -->
+  <div *ngIf="loading" class="loading-content" style="text-align: center">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="user-content">
+    <div class="list-view">
+      <div class="feed-item" *ngFor="let post of eventos; let i = index">
+        <ion-card>
+          <preload-image [ratio]="{w:3, h:2}" [src]="post.foto ? post.foto : './assets/images/empty.png'" title="post.title">
+            <ion-fab bottom right style="margin-right: 10px; margin-bottom: -10px">
+              <button color="danger" small (click)="excluir(i)" ion-fab>
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-fab><!-- criar um novo evento -->
+          </preload-image>
+          <ion-card-content>
+            <ion-card-title class="item-title">
+              {{ post.nome }}
+            </ion-card-title>
+            <p class="item-title">
+              {{ post.categoria }}
+              <br>
+              <small *ngIf="post.email" >Enviado por: {{ post.email }}</small>
+            </p>
+            <p class="item-text">
+              {{ post.descricao }}<br>
+            </p>
+            <p *ngIf="post.data" class="item-text text-info">
+              <ion-icon name="calendar"></ion-icon> {{ post.data }}
+            </p>
+            <p *ngIf="post.horario" class="item-text text-info">
+              <ion-icon name="alarm"></ion-icon> {{ post.horario }}
+            </p>
+            <p *ngIf="post.contato" class="item-text text-info">
+              <ion-icon name="call"></ion-icon> {{ post.contato }}
+            </p>
+            <p *ngIf="post.endereco" class="item-text text-info">
+              <ion-icon name="map"></ion-icon> {{ post.endereco }}
+            </p>
+          </ion-card-content>
+          <ion-row no-padding class="actions-row">
+            <ion-col no-padding width-45 text-center>
+              <button (click)="comments( post['id'] )" class="action-button" ion-button clear small icon-left>
+                <ion-icon name='chatbubbles'></ion-icon>
+                Comentários
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
+    </div>
+  </div><!-- eventos -->
+
+  <div class="empty-list" *ngIf="eventos.length == 0 && !loading">
+    <div class="icon-content">
+      <ion-icon name="eye-off"></ion-icon>
+    </div>
+    <div class="text-content">
+      Nenhum evento encontrado
+    </div>
+  </div><!-- lista vazia -->
+
+  <ion-row *ngIf="!loading && hasMore && eventos.length > 0 ">
+    <ion-col></ion-col>
+    <ion-col>
+      <button ion-button round color="primary">
+        Carregar mais
+      </button>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row><!-- carregar mais -->
+
+  <ion-fab bottom right >
+    <button (click)="openNewEvent()" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab><!-- criar um novo evento -->
+
+</ion-content>

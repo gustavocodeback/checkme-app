@@ -1,8 +1,7 @@
-import { ApiProvider } from './../../providers/api/api';
-import { RankingPage } from './../ranking/ranking';
-import { ListNotificacoesPage } from './../list-notificacoes/list-notificacoes';
+import { SettingsPage } from './../settings/settings';
 import { Component } from '@angular/core';
-import { InicialPage } from '../inicial/inicial';
+import { ListingPage } from '../listing/listing';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'tabs-navigation',
@@ -12,19 +11,10 @@ export class TabsNavigationPage {
   tab1Root: any;
   tab2Root: any;
   tab3Root: any;
-  badge = '';
 
-  constructor( public api: ApiProvider ) {
-    this.tab1Root = InicialPage;
-    this.tab2Root = RankingPage;
-    this.tab3Root = ListNotificacoesPage;
-    let self = this;
-
-    // aplica o callback
-    this.api.notify( ( num ) => {
-
-      // seta o badge
-      self.badge = num == 0 ? '': num;
-    });
+  constructor() {
+    this.tab1Root = ListingPage;
+    this.tab2Root = ProfilePage;
+    this.tab3Root = SettingsPage;
   }
 }

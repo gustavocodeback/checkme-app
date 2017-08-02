@@ -2,8 +2,7 @@ preload-image {
   position: relative;
   width: 100%;
 	display: block;
-	overflow: hidden;
-	border: 100px;
+  overflow: hidden;
 
 	// If the image is rounded
 	&.rounded-image
@@ -20,7 +19,6 @@ preload-image {
 	  {
 			visibility: visible;
 			opacity: 1;
-			
 	  }
 
 		ion-spinner {
@@ -31,7 +29,7 @@ preload-image {
 
   img
   {
-		position: absolute;
+    position: absolute;
 		left: 0px;
 		top: 0px;
 		visibility: hidden;

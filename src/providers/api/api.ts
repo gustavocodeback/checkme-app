@@ -41,12 +41,14 @@ export class ApiProvider {
     // pega os itens salvos no localstorage
     const email = localStorage.getItem( 'auth-email' );
     const uid = localStorage.getItem( 'auth-uid' );
+    const cidade = localStorage.getItem( 'filter-cidade' );
 
     // seta os headers
     const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Auth-Email': email,
-      'Auth-Uid': uid
+      'Content-Type'  : 'application/json',
+      'Auth-Email'    : email,
+      'Auth-Uid'      : uid,
+      'Filter-Cidade' : cidade
     });
 
     // volta o objt
@@ -107,19 +109,16 @@ export class ApiProvider {
 
       // pega a resposta
       req.toPromise().then( data => {
-        
+        console.log(data);
         // pega a resposta
         const body = data.json();
+
+        console.log( 'corpo ', body );
 
         // pega a resposta
         if ( !body.code ) {
           reject( 'Erro na resposta da requisicao' );
           return;
-        }
-
-        // verifica se tem notificacoes
-        if ( body.notificacoes && this.callback ) {
-          this.callback( body.notificacoes );
         }
 
         // verifica o código

@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <span>Agenda</span>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar  placeholder="Nome ou categoria"
+                    [(ngModel)]="query"
+                    (ionInput)="carregar( true )"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="feed-content">
+
+  <div class="feed-item" *ngFor="let post of bandas; let i = index">
+    <ion-card>
+      <preload-image [ratio]="{w:3, h:2}" [src]="post.foto ? post.foto : './assets/images/empty.png'" title="post.title"></preload-image>
+      <ion-card-content>
+        <ion-card-title class="item-title">
+          {{ post.nome }}
+        </ion-card-title>
+        <p class="item-title">
+          {{ post.categoria }}
+          <br>
+          <small *ngIf="post.email" >Enviado por: {{ post.email }}</small>
+        </p>
+        <p class="item-text">
+          {{ post.descricao }}<br>
+        </p>
+        <p *ngIf="post.data" class="item-text text-info">
+          <ion-icon name="calendar"></ion-icon> {{ post.data }}
+        </p>
+        <p *ngIf="post.horario" class="item-text text-info">
+          <ion-icon name="alarm"></ion-icon> {{ post.horario }}
+        </p>
+        <p *ngIf="post.contato" class="item-text text-info">
+          <ion-icon name="call"></ion-icon> {{ post.contato }}
+        </p>
+        <p *ngIf="post.endereco" class="item-text text-info">
+          <ion-icon name="map"></ion-icon> {{ post.endereco }}
+        </p>
+        <p *ngIf="post.local_id" (click)="openContactCard( post['local_id'] )" class="item-text" style="text-align: center; padding-top: 20px">
+          <button ion-button round outline small icon-left>
+            <ion-icon name="redo"></ion-icon>
+            Ver local
+          </button>
+        </p>
+      </ion-card-content>
+      <ion-row no-padding class="actions-row">
+        <ion-col no-padding width-30 text-left>
+          <button class="action-button" (click)="favoritar( i )" ion-button clear small icon-left>
+            <ion-icon [isActive]="post.favorito" name='heart'></ion-icon>
+            Favoritar
+          </button>
+        </ion-col>
+        <ion-col width-25></ion-col>
+        <ion-col no-padding width-45 text-center>
+          <button class="action-button" (click)="comments( post['id'] )" ion-button clear small icon-left>
+            <ion-icon name='chatbubbles'></ion-icon>
+            Comentários
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div *ngIf="loading" style="text-align: center">
+      <ion-spinner></ion-spinner>
+    </div><!-- loading -->
+
+    <ion-row *ngIf="hasMore && !loading">
+      <ion-col></ion-col>
+      <ion-col>
+        <button (click)="carregar()" ion-button color="primary"> Carregar mais </button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row><!-- botao pra carregar mais -->
+
+    <div class="empty-list" *ngIf="bandas.length == 0 && !loading">
+      <div class="icon-content">
+        <ion-icon name="eye-off"></ion-icon>
+      </div>
+      <div class="text-content">
+        Nenhum comércio encontrado
+      </div>
+    </div><!-- lista vazia -->
+
+</ion-content>

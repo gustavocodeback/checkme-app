@@ -1,0 +1,45 @@
+<ion-header class="listing-header">
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Check-me!
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar  placeholder="Pesquise por cidades" 
+                    [(ngModel)]="query" 
+                    (ionInput)="filter()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="listing-content">
+
+  <h4 class="categories-title">Cidades</h4>
+  <div class="list-mini">
+    <ion-list>
+
+      <div *ngFor="let cidade of cidades">
+        <button class="list-item"  *ngIf="!cidade['hide']" (click)="setCidade(cidade['id'])" ion-item>
+          <ion-row no-padding class="content-row one-line">
+            <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+            <ion-col no-padding width-18 class="item-avatar">
+              <ion-icon name="pin"></ion-icon>
+            </ion-col>
+            <ion-col no-padding width-72 class="item-content">
+              <h3 class="item-title">{{ cidade['cidade'] }}</h3>
+              <p class="item-description">{{ cidade['estado'] }}</p>
+            </ion-col>
+            <ion-col no-padding width-10 class="item-icon" *ngIf="selecionada == cidade['id']">
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </button>
+      </div>
+  
+    </ion-list>
+    <p class="info">Em breve mais cidades ...</p>
+  </div>
+
+</ion-content>

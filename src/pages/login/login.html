@@ -5,32 +5,20 @@
 </ion-header>
 
 <ion-content class="login-content auth-content">
-
-  <div class="logo">
-    <div class="logo-content">
-      <preload-image [ratio]="{w:1, h:1}" src="assets/images/logo.png"></preload-image>
-    </div>
-  </div><!-- logo -->
-
   <form class="login-form auth-form" [formGroup]="login" (ngSubmit)="doLogin()">
     <ion-item>
-      <ion-input type="number" placeholder="CPF" formControlName="cpf"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-input type="email" placeholder="email@email.com" formControlName="email"></ion-input>
     </ion-item>
     <show-hide-container>
       <ion-item>
-        <ion-input type="password" placeholder="Senha" formControlName="password" show-hide-input></ion-input>
+        <ion-input type="password" placeholder="******" formControlName="password" show-hide-input></ion-input>
       </ion-item>
     </show-hide-container>
-    <br>
-    <div class="has-error" *ngIf="hasError">{{ hasError | errors }}</div>
-    <button ion-button block class="auth-action-button login-button" type="submit" [disabled]="!login.valid">
-      Entrar
-    </button>
-  </form><!-- formulario de login -->
-
+    <div *ngIf="hasError" class="error-content">
+      {{ hasError | fireErrors }}
+    </div>
+    <button ion-button block class="auth-action-button login-button" type="submit" [disabled]="!login.valid">Entrar</button>
+  </form>
   <ion-row class="alt-options">
     <ion-col no-padding width-50>
       <button ion-button block clear class="forgot-button" (click)="goToForgotPassword()">Recuperar senha</button>
@@ -38,6 +26,9 @@
     <ion-col no-padding width-50>
       <button ion-button block clear class="signup-button" (click)="goToSignup()">Cadastre-se!</button>
     </ion-col>
-  </ion-row><!-- links -->
-
+  </ion-row>
+  <p class="auth-divider">
+    Ou
+  </p>
+  <button ion-button block class="facebook-auth-button" (click)="doFacebookLogin()">Entrar com o Facebook</button>
 </ion-content>

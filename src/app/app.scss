@@ -97,3 +97,21 @@ table.c11 {
         }
     }
 }
+
+.error-content {
+    border: 1px solid #A94442;
+    margin-top: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #F2DEDE;
+    color: #A94442;
+}
+
+.empty-list {
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+    .icon-content {
+        font-size: 50px;
+    }
+}

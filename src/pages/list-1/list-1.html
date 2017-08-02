@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar  placeholder="Pesquise pelo nome ou categoria"
+                    [(ngModel)]="query"
+                    (ionInput)="carregar(true)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="list-big-content">
+  <div class="list-big">
+
+    <ion-list>
+      <button (click)="openContactCard( item )" class="list-item" ion-item *ngFor="let item of comercios">
+        <ion-row no-padding class="content-row">
+          <ion-col no-padding width-33 class="item-avatar">
+            <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.foto"></preload-image>
+          </ion-col>
+          <ion-col no-padding width-57 class="item-content">
+            <h3 class="item-title">{{item.nome}}</h3>
+            <p class="item-description" rows="3">
+              <b>{{item.categoria}}</b>
+              <br>
+              {{item.descricao}}
+            </p>
+            <!-- You can change the rows quantity by using rows="X", where X can be any number for example: rows="4" -->
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+
+    <div *ngIf="loading" style="text-align: center">
+      <ion-spinner></ion-spinner>
+    </div><!-- loading -->
+
+    <ion-row *ngIf="hasMore && !loading">
+      <ion-col></ion-col>
+      <ion-col>
+        <button (click)="carregar()" ion-button color="primary"> Carregar mais </button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row><!-- botao pra carregar mais -->
+
+    <div class="empty-list" *ngIf="comercios.length == 0 && !loading">
+      <div class="icon-content">
+        <ion-icon name="eye-off"></ion-icon>
+      </div>
+      <div class="text-content">
+        Nenhum comércio encontrado
+      </div>
+    </div><!-- lista vazia -->
+  </div>
+</ion-content>

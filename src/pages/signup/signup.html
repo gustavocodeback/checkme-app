@@ -6,44 +6,15 @@
 
 <ion-content class="signup-content auth-content">
   <h2 class="auth-title">Criar uma conta</h2>
-
   <form class="signup-form auth-form" [formGroup]="signup" (ngSubmit)="doSignup()">
     <ion-item>
-      <ion-input type="number" placeholder="CPF" formControlName="cpf"></ion-input>
+      <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" placeholder="RG" formControlName="rg"></ion-input>
-    </ion-item>    
-    <ion-item>
-      <ion-input type="tel" placeholder="Celular" formControlName="celular"></ion-input>
-    </ion-item> 
-    <ion-item>
-      <ion-input type="text" placeholder="Logradouro" formControlName="endereco"></ion-input>
+      <ion-input type="cidade" placeholder="Cidade" formControlName="cidade"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="tel" placeholder="99" formControlName="numero"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="tel" placeholder="Cep" formControlName="cep"></ion-input>
-    </ion-item>    
-    <ion-item>
-      <ion-input type="text" placeholder="Complemento" formControlName="complemento"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Estado</ion-label>
-      <ion-select formControlName="estado" >
-        <ion-option [value]="item.CodEstado" (ionSelect)="selecionaEstado( item.CodEstado )" *ngFor="let item of estados">{{item.uf}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Cidade</ion-label>
-      <ion-select formControlName="cidade" [disabled]="cidades.length == 0">
-        <ion-option [value]="" *ngIf="cidades.length == 0"></ion-option>
-        <ion-option [value]="item.CodCidade" *ngFor="let item of cidades">{{item.nome}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
     </ion-item>
     <show-hide-container>
       <ion-item>
@@ -55,14 +26,16 @@
         <ion-input type="password" placeholder="Confirme a senha" formControlName="confirm_password" show-hide-input></ion-input>
       </ion-item>
     </show-hide-container>
-    <br>
-    <div class="has-error" *ngIf="hasError">{{ hasError | errors }}</div>
-    <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="!signup.valid">
-      Criar conta
-    </button>
-  </form><!-- formulario de login -->
-
+    <div *ngIf="hasError" class="error-content">
+      {{ hasError | fireErrors }}
+    </div>
+    <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="!signup.valid">Cadastrar</button>
+  </form>
+  <p class="auth-divider">
+    Ou
+  </p>
+  <button ion-button block class="facebook-auth-button" (click)="doFacebookSignup()">Entrar com o Facebook</button>
   <p class="legal-stuff">
-    Criando esta conta você concorda com os <a class="legal-action" (click)="showTermsModal()">Regulamentos</a>
+    Criando sua conta, você concorda com os nossos <a class="legal-action" (click)="showTermsModal()">Termos de uso</a>
   </p>
 </ion-content>
